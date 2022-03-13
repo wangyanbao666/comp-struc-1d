@@ -1,0 +1,667 @@
+Warnings in file E:\comp struc\project\alu2\source\time_count.luc:
+    Line 3, Column 4 : "rst" was never used
+    Line 2, Column 4 : "clk" was never used
+Starting Vivado...
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source {E:\comp struc\project\alu2\work\project.tcl}
+# set projDir "E:/comp\ struc/project/alu2/work/vivado"
+# set projName "alu2"
+# set topName top
+# set device xc7a35tftg256-1
+# if {[file exists "$projDir/$projName"]} { file delete -force "$projDir/$projName" }
+# create_project $projName "$projDir/$projName" -part $device
+# set_property design_mode RTL [get_filesets sources_1]
+# set verilogSources [list "E:/comp\ struc/project/alu2/work/verilog/au_top_0.v" "E:/comp\ struc/project/alu2/work/verilog/fsm_combine_1.v" "E:/comp\ struc/project/alu2/work/verilog/reset_conditioner_2.v" "E:/comp\ struc/project/alu2/work/verilog/input_mode_3.v" "E:/comp\ struc/project/alu2/work/verilog/fsm_test_4.v" "E:/comp\ struc/project/alu2/work/verilog/button_conditioner_5.v" "E:/comp\ struc/project/alu2/work/verilog/edge_detector_6.v" "E:/comp\ struc/project/alu2/work/verilog/multi_seven_seg_7.v" "E:/comp\ struc/project/alu2/work/verilog/alu_8.v" "E:/comp\ struc/project/alu2/work/verilog/counter_9.v" "E:/comp\ struc/project/alu2/work/verilog/rom_10.v" "E:/comp\ struc/project/alu2/work/verilog/pipeline_11.v" "E:/comp\ struc/project/alu2/work/verilog/counter_12.v" "E:/comp\ struc/project/alu2/work/verilog/seven_seg_13.v" "E:/comp\ struc/project/alu2/work/verilog/decoder_14.v" "E:/comp\ struc/project/alu2/work/verilog/adder_15.v" "E:/comp\ struc/project/alu2/work/verilog/comparator_16.v" "E:/comp\ struc/project/alu2/work/verilog/boolean_17.v" "E:/comp\ struc/project/alu2/work/verilog/shifter_18.v" "E:/comp\ struc/project/alu2/work/verilog/flip_19.v" "E:/comp\ struc/project/alu2/work/verilog/find_neighbor_20.v" ]
+# import_files -fileset [get_filesets sources_1] -force -norecurse $verilogSources
+# set xdcSources [list "E:/comp\ struc/project/alu2/work/constraint/alchitry.xdc" "E:/comp\ struc/project/alu2/work/constraint/io.xdc" "E:/comp\ struc/library/components/au.xdc" ]
+# read_xdc $xdcSources
+# set_property STEPS.WRITE_BITSTREAM.ARGS.BIN_FILE true [get_runs impl_1]
+# update_compile_order -fileset sources_1
+# launch_runs -runs synth_1 -jobs 8
+
+[Sun Mar 13 23:56:03 2022] Launched synth_1...
+Run output will be captured here: E:/comp struc/project/alu2/work/vivado/alu2/alu2.runs/synth_1/runme.log
+# wait_on_run synth_1
+[Sun Mar 13 23:56:03 2022] Waiting for synth_1 to finish...
+
+*** Running vivado
+    with args -log au_top_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source au_top_0.tcl
+
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source au_top_0.tcl -notrace
+Command: synth_design -top au_top_0 -part xc7a35tftg256-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tftg256-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 12144
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'au_top_0' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/au_top_0.v:7]
+INFO: [Synth 8-6157] synthesizing module 'fsm_combine_1' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_combine_1.v:7]
+	Parameter S0_changemode bound to: 1'b0 
+	Parameter S1_changemode bound to: 1'b1 
+INFO: [Synth 8-6157] synthesizing module 'button_conditioner_5' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/button_conditioner_5.v:13]
+	Parameter CLK_FREQ bound to: 26'b10111110101111000010000000 
+	Parameter MIN_DELAY bound to: 5'b10100 
+	Parameter NUM_SYNC bound to: 2'b10 
+INFO: [Synth 8-6157] synthesizing module 'pipeline_11' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/pipeline_11.v:11]
+	Parameter DEPTH bound to: 2'b10 
+INFO: [Synth 8-6155] done synthesizing module 'pipeline_11' (1#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/pipeline_11.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'button_conditioner_5' (2#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/button_conditioner_5.v:13]
+INFO: [Synth 8-6157] synthesizing module 'edge_detector_6' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/edge_detector_6.v:12]
+	Parameter RISE bound to: 1'b1 
+	Parameter FALL bound to: 1'b0 
+INFO: [Synth 8-6155] done synthesizing module 'edge_detector_6' (3#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/edge_detector_6.v:12]
+INFO: [Synth 8-6157] synthesizing module 'input_mode_3' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/input_mode_3.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_8' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_8.v:7]
+INFO: [Synth 8-6157] synthesizing module 'adder_15' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_15.v:7]
+INFO: [Synth 8-226] default block is never used [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_15.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'adder_15' (4#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_15.v:7]
+INFO: [Synth 8-6157] synthesizing module 'comparator_16' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_16.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'comparator_16' (5#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_16.v:7]
+INFO: [Synth 8-6157] synthesizing module 'boolean_17' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/boolean_17.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'boolean_17' (6#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/boolean_17.v:7]
+INFO: [Synth 8-6157] synthesizing module 'shifter_18' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/shifter_18.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'shifter_18' (7#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/shifter_18.v:7]
+INFO: [Synth 8-6157] synthesizing module 'flip_19' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/flip_19.v:7]
+INFO: [Synth 8-6157] synthesizing module 'find_neighbor_20' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/find_neighbor_20.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'find_neighbor_20' (8#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/find_neighbor_20.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'flip_19' (9#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/flip_19.v:7]
+INFO: [Synth 8-226] default block is never used [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_8.v:107]
+INFO: [Synth 8-6155] done synthesizing module 'alu_8' (10#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_8.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'input_mode_3' (11#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/input_mode_3.v:7]
+INFO: [Synth 8-6157] synthesizing module 'fsm_test_4' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_test_4.v:7]
+	Parameter S0_fsm_t bound to: 5'b00000 
+	Parameter S1_fsm_t bound to: 5'b00001 
+	Parameter S2_fsm_t bound to: 5'b00010 
+	Parameter S3_fsm_t bound to: 5'b00011 
+	Parameter S4_fsm_t bound to: 5'b00100 
+	Parameter S5_fsm_t bound to: 5'b00101 
+	Parameter S6_fsm_t bound to: 5'b00110 
+	Parameter S7_fsm_t bound to: 5'b00111 
+	Parameter S8_fsm_t bound to: 5'b01000 
+	Parameter S9_fsm_t bound to: 5'b01001 
+	Parameter S10_fsm_t bound to: 5'b01010 
+	Parameter S11_fsm_t bound to: 5'b01011 
+	Parameter S12_fsm_t bound to: 5'b01100 
+	Parameter S13_fsm_t bound to: 5'b01101 
+	Parameter S14_fsm_t bound to: 5'b01110 
+	Parameter S15_fsm_t bound to: 5'b01111 
+	Parameter S16_fsm_t bound to: 5'b10000 
+	Parameter S17_fsm_t bound to: 5'b10001 
+	Parameter S18_fsm_t bound to: 5'b10010 
+	Parameter S19_fsm_t bound to: 5'b10011 
+	Parameter S20_fsm_t bound to: 5'b10100 
+INFO: [Synth 8-6157] synthesizing module 'counter_9' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_9.v:14]
+	Parameter SIZE bound to: 1'b1 
+	Parameter DIV bound to: 5'b11010 
+	Parameter TOP bound to: 1'b0 
+	Parameter UP bound to: 1'b1 
+	Parameter MAX_VALUE bound to: 27'b011111111111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'counter_9' (12#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_9.v:14]
+INFO: [Synth 8-6157] synthesizing module 'rom_10' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/rom_10.v:7]
+	Parameter A bound to: 336'b000000000000000100000000000000011000000000000000011111111111111100000000000011110000000000001111000000000000111110100101111100001010010111110000101001011111000000000000000000010000000001111111100000000000000100000001000000000000000000000010111101011010111111110101101011111000101000001111000001010101111110001010000011110000000000010101 
+	Parameter B bound to: 336'b000000000000001000000000000000100111111111111111011111111111111100000000000001010000000000000101000000000000010111110101101011111111010110101111111101011010111100000000000000110000000000000101000000000000001100000000000000000000000110110111000110100001010111110101101011111111010110101111100010100000111100000101010111110000010110000000 
+	Parameter AL bound to: 126'b000000000001000001000000011000011110010110011000011110010110100000100001100011111111111111110011110011110101110101110111000010 
+	Parameter ZVN bound to: 66'b000001011011000000000000000000000000000000000000000000000000000000 
+	Parameter O bound to: 336'b000000000000001111111111111111110000000000000001111111111111111000000000000001010000000000001111000000000000101010100101101000001111010111111111010100000101111100000000000010000000000000000011111100000000000000000001101000000000000110100000000000000000000000000000000000010000000000000001000000000000000000000000000000010111001110000000 
+INFO: [Synth 8-6155] done synthesizing module 'rom_10' (13#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/rom_10.v:7]
+INFO: [Synth 8-155] case statement is not full and has no default [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_test_4.v:117]
+INFO: [Synth 8-6155] done synthesizing module 'fsm_test_4' (14#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_test_4.v:7]
+INFO: [Synth 8-6157] synthesizing module 'multi_seven_seg_7' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/multi_seven_seg_7.v:12]
+	Parameter DIGITS bound to: 3'b100 
+	Parameter DIV bound to: 5'b10000 
+	Parameter DIGIT_BITS bound to: 2'b10 
+INFO: [Synth 8-6157] synthesizing module 'counter_12' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_12.v:14]
+	Parameter SIZE bound to: 2'b10 
+	Parameter DIV bound to: 5'b10000 
+	Parameter TOP bound to: 4'b0011 
+	Parameter UP bound to: 1'b1 
+	Parameter MAX_VALUE bound to: 20'b00111111111111111111 
+INFO: [Synth 8-6155] done synthesizing module 'counter_12' (15#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_12.v:14]
+INFO: [Synth 8-6157] synthesizing module 'seven_seg_13' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/seven_seg_13.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'seven_seg_13' (16#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/seven_seg_13.v:7]
+INFO: [Synth 8-6157] synthesizing module 'decoder_14' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/decoder_14.v:11]
+	Parameter WIDTH bound to: 2'b10 
+INFO: [Synth 8-6155] done synthesizing module 'decoder_14' (17#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/decoder_14.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'multi_seven_seg_7' (18#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/multi_seven_seg_7.v:12]
+INFO: [Synth 8-226] default block is never used [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_combine_1.v:114]
+INFO: [Synth 8-6155] done synthesizing module 'fsm_combine_1' (19#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_combine_1.v:7]
+INFO: [Synth 8-6157] synthesizing module 'reset_conditioner_2' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/reset_conditioner_2.v:11]
+	Parameter STAGES bound to: 3'b100 
+INFO: [Synth 8-6155] done synthesizing module 'reset_conditioner_2' (20#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/reset_conditioner_2.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'au_top_0' (21#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/au_top_0.v:7]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:07 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1001.309 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [E:/comp struc/project/alu2/work/constraint/alchitry.xdc]
+Finished Parsing XDC File [E:/comp struc/project/alu2/work/constraint/alchitry.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/comp struc/project/alu2/work/constraint/alchitry.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [E:/comp struc/project/alu2/work/constraint/io.xdc]
+Finished Parsing XDC File [E:/comp struc/project/alu2/work/constraint/io.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/comp struc/project/alu2/work/constraint/io.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Parsing XDC File [E:/comp struc/library/components/au.xdc]
+Finished Parsing XDC File [E:/comp struc/library/components/au.xdc]
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1001.309 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a35tftg256-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'M_fsm_t_q_reg' in module 'fsm_test_4'
+WARNING: [Synth 8-327] inferring latch for variable 's_reg' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_16.v:21]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                S0_fsm_t |            000000000000000000001 |                            00000
+                S1_fsm_t |            000000000000000000010 |                            00001
+                S2_fsm_t |            000000000000000000100 |                            00010
+                S3_fsm_t |            000000000000000001000 |                            00011
+                S4_fsm_t |            000000000000000010000 |                            00100
+                S5_fsm_t |            000000000000000100000 |                            00101
+                S6_fsm_t |            000000000000001000000 |                            00110
+                S7_fsm_t |            000000000000010000000 |                            00111
+                S8_fsm_t |            000000000000100000000 |                            01000
+                S9_fsm_t |            000000000001000000000 |                            01001
+               S10_fsm_t |            000000000010000000000 |                            01010
+               S11_fsm_t |            000000000100000000000 |                            01011
+               S12_fsm_t |            000000001000000000000 |                            01100
+               S13_fsm_t |            000000010000000000000 |                            01101
+               S14_fsm_t |            000000100000000000000 |                            01110
+               S15_fsm_t |            000001000000000000000 |                            01111
+               S16_fsm_t |            000010000000000000000 |                            10000
+               S17_fsm_t |            000100000000000000000 |                            10001
+               S18_fsm_t |            001000000000000000000 |                            10010
+               S19_fsm_t |            010000000000000000000 |                            10011
+               S20_fsm_t |            100000000000000000000 |                            10100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'M_fsm_t_q_reg' using encoding 'one-hot' in module 'fsm_test_4'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:17 ; elapsed = 00:00:18 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   18 Bit       Adders := 1     
+	   3 Input   16 Bit       Adders := 2     
++---XORs : 
+	   2 Input     16 Bit         XORs := 4     
+	   2 Input      1 Bit         XORs := 4     
++---Registers : 
+	               18 Bit    Registers := 1     
+	               16 Bit    Registers := 3     
+	                6 Bit    Registers := 1     
+	                4 Bit    Registers := 1     
+	                3 Bit    Registers := 1     
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 6     
++---Muxes : 
+	   2 Input   18 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 10    
+	   4 Input   16 Bit        Muxes := 10    
+	  10 Input   16 Bit        Muxes := 2     
+	   3 Input   16 Bit        Muxes := 2     
+	  21 Input    5 Bit        Muxes := 1     
+	   4 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 1     
+	   3 Input    3 Bit        Muxes := 1     
+	   5 Input    2 Bit        Muxes := 2     
+	   3 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 8     
+	  21 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 90 (col length:60)
+BRAMs: 100 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+DSP Report: Generating DSP fsmc/fsmt/aluUnit/out0, operation Mode is: A*B.
+DSP Report: operator fsmc/fsmt/aluUnit/out0 is absorbed into DSP fsmc/fsmt/aluUnit/out0.
+DSP Report: Generating DSP fsmc/inmode/aluUnit/out0, operation Mode is: A2*B2.
+DSP Report: register fsmc/inmode/M_bstore_q_reg is absorbed into DSP fsmc/inmode/aluUnit/out0.
+DSP Report: register fsmc/inmode/M_astore_q_reg is absorbed into DSP fsmc/inmode/aluUnit/out0.
+DSP Report: operator fsmc/inmode/aluUnit/out0 is absorbed into DSP fsmc/inmode/aluUnit/out0.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:29 ; elapsed = 00:00:31 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+DSP: Preliminary Mapping	Report (see note below)
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+|alu_8       | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
+|au_top_0    | A2*B2       | 16     | 16     | -      | -      | 32     | 1    | 1    | -    | -    | -     | 0    | 0    | 
++------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
+
+Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:40 ; elapsed = 00:00:42 . Memory (MB): peak = 1001.309 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 1151.387 ; gain = 150.078
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:47 ; elapsed = 00:00:49 . Memory (MB): peak = 1152.434 ; gain = 151.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1152.434 ; gain = 151.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1152.434 ; gain = 151.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1152.434 ; gain = 151.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1152.434 ; gain = 151.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1152.434 ; gain = 151.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1152.434 ; gain = 151.125
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |BUFG    |     1|
+|2     |CARRY4  |    47|
+|3     |DSP48E1 |     2|
+|5     |LUT1    |    19|
+|6     |LUT2    |    40|
+|7     |LUT3    |    60|
+|8     |LUT4    |    56|
+|9     |LUT5    |   120|
+|10    |LUT6    |   178|
+|11    |FDRE    |   236|
+|12    |FDSE    |     5|
+|13    |IBUF    |    24|
+|14    |OBUF    |    37|
+|15    |OBUFT   |     8|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1152.434 ; gain = 151.125
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:41 ; elapsed = 00:00:51 . Memory (MB): peak = 1152.434 ; gain = 151.125
+Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:00:54 . Memory (MB): peak = 1152.434 ; gain = 151.125
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 1152.434 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 49 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1152.434 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+64 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:59 ; elapsed = 00:01:03 . Memory (MB): peak = 1152.434 ; gain = 151.125
+INFO: [Common 17-1381] The checkpoint 'E:/comp struc/project/alu2/work/vivado/alu2/alu2.runs/synth_1/au_top_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file au_top_0_utilization_synth.rpt -pb au_top_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Sun Mar 13 23:57:17 2022...
+[Sun Mar 13 23:57:19 2022] synth_1 finished
+wait_on_run: Time (s): cpu = 00:00:00 ; elapsed = 00:01:16 . Memory (MB): peak = 999.664 ; gain = 0.000
+# launch_runs impl_1 -to_step write_bitstream -jobs 8
+[Sun Mar 13 23:57:20 2022] Launched impl_1...
+Run output will be captured here: E:/comp struc/project/alu2/work/vivado/alu2/alu2.runs/impl_1/runme.log
+# wait_on_run impl_1
+[Sun Mar 13 23:57:20 2022] Waiting for impl_1 to finish...
+
+
+*** Running vivado
+    with args -log au_top_0.vdi -applog -m64 -product Vivado -messageDb vivado.pb -mode batch -source au_top_0.tcl -notrace
+
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source au_top_0.tcl -notrace
+Command: link_design -top au_top_0 -part xc7a35tftg256-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+INFO: [Device 21-403] Loading part xc7a35tftg256-1
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.015 . Memory (MB): peak = 999.844 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 49 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2020.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Parsing XDC File [E:/comp struc/project/alu2/work/constraint/alchitry.xdc]
+Finished Parsing XDC File [E:/comp struc/project/alu2/work/constraint/alchitry.xdc]
+Parsing XDC File [E:/comp struc/project/alu2/work/constraint/io.xdc]
+Finished Parsing XDC File [E:/comp struc/project/alu2/work/constraint/io.xdc]
+Parsing XDC File [E:/comp struc/library/components/au.xdc]
+Finished Parsing XDC File [E:/comp struc/library/components/au.xdc]
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 999.844 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+7 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:11 . Memory (MB): peak = 999.844 ; gain = 0.000
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 999.844 ; gain = 0.000
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 1b5a4980f
+
+Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 1170.359 ; gain = 170.516
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 1c6b4d987
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.046 . Memory (MB): peak = 1382.496 ; gain = 0.000
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 1 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 1c6b4d987
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.055 . Memory (MB): peak = 1382.496 ; gain = 0.000
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: 1f5862bb6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.070 . Memory (MB): peak = 1382.496 ; gain = 0.000
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 1f5862bb6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.084 . Memory (MB): peak = 1382.496 ; gain = 0.000
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 5 Shift Register Optimization | Checksum: 1f5862bb6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.086 . Memory (MB): peak = 1382.496 ; gain = 0.000
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: 1f5862bb6
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.090 . Memory (MB): peak = 1382.496 ; gain = 0.000
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               0  |               1  |                                              0  |
+|  Constant propagation         |               0  |               0  |                                              0  |
+|  Sweep                        |               0  |               0  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.002 . Memory (MB): peak = 1382.496 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: 26d6812bd
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.126 . Memory (MB): peak = 1382.496 ; gain = 0.000
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+Ending Power Optimization Task | Checksum: 26d6812bd
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.009 . Memory (MB): peak = 1382.496 ; gain = 0.000
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 26d6812bd
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1382.496 ; gain = 0.000
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1382.496 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: 26d6812bd
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1382.496 ; gain = 0.000
+INFO: [Common 17-83] Releasing license: Implementation
+24 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:16 ; elapsed = 00:00:15 . Memory (MB): peak = 1382.496 ; gain = 382.652
+INFO: [Timing 38-480] Writing timing data to binary archive.
+Writing placer database...
+Writing XDEF routing.
+Writing XDEF routing logical nets.
+Writing XDEF routing special nets.
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.058 . Memory (MB): peak = 1382.496 ; gain = 0.000
+INFO: [Common 17-1381] The checkpoint 'E:/comp struc/project/alu2/work/vivado/alu2/alu2.runs/impl_1/au_top_0_opt.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file au_top_0_drc_opted.rpt -pb au_top_0_drc_opted.pb -rpx au_top_0_drc_opted.rpx
+Command: report_drc -file au_top_0_drc_opted.rpt -pb au_top_0_drc_opted.pb -rpx au_top_0_drc_opted.rpx
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'E:/Xilinx/Vivado/2020.2/data/ip'.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Coretcl 2-168] The results of DRC are in file E:/comp struc/project/alu2/work/vivado/alu2/alu2.runs/impl_1/au_top_0_drc_opted.rpt.
+report_drc completed successfully
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7a35t'
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 2 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 2 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1426.684 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 192216b45
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 1426.684 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1426.684 ; gain = 0.000
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 1993dfada
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.435 . Memory (MB): peak = 1426.684 ; gain = 0.000
+
+Phase 1.3 Build Placer Netlist Model
+Phase 1.3 Build Placer Netlist Model | Checksum: 21c901b50
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.696 . Memory (MB): peak = 1426.684 ; gain = 0.000
+
+Phase 1.4 Constrain Clocks/Macros
+Phase 1.4 Constrain Clocks/Macros | Checksum: 21c901b50
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.699 . Memory (MB): peak = 1426.684 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: 21c901b50
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.706 . Memory (MB): peak = 1426.684 ; gain = 0.000
+
+Phase 2 Global Placement
+
+Phase 2.1 Floorplanning
+Phase 2.1 Floorplanning | Checksum: 267758478
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.865 . Memory (MB): peak = 1426.684 ; gain = 0.000
+
+Phase 2.2 Update Timing before SLR Path Opt
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 244546a88
+
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:00.947 . Memory (MB): peak = 1426.684 ; gain = 0.000
+
+Phase 2.3 Global Placement Core
+
+Phase 2.3.1 Physical Synthesis In Placer
+INFO: [Physopt 32-1035] Found 0 LUTNM shape to break, 37 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 0, two critical 0, total 0, new lutff created 0
+INFO: [Physopt 32-775] End 1 Pass. Optimized 18 nets or cells. Created 0 new cell, deleted 18 existing cells and moved 0 existing cell
+INFO: [Physopt 32-65] No nets found for high-fanout optimization.
+INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+INFO: [Physopt 32-670] No setup violation found.  DSP Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register to Pipeline Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  Shift Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  BRAM Register Optimization was not performed.
+INFO: [Physopt 32-670] No setup violation found.  URAM Register Optimization was not performed.
+INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
+INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1426.684 ; gain = 0.000
+
+Summary of Physical Synthesis Optimizations
+============================================
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+|  LUT Combining                                    |            0  |             18  |                    18  |           0  |           1  |  00:00:00  |
+|  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
+|  DSP Register                                     |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Shift Register                                   |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  BRAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  URAM Register                                    |            0  |              0  |                     0  |           0  |           0  |  00:00:00  |
+|  Dynamic/Static Region In

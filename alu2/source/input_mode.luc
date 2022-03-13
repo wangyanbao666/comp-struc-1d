@@ -26,7 +26,7 @@ module input_mode (
         outstore.d  = iodip;
     }
     if (io_button[2]){
-        aluUnit.alufn = iodip[5:0];
+        alufnstore.d = iodip[5:0];
         outstore.d  = iodip;
       }
     if (io_button[3]){

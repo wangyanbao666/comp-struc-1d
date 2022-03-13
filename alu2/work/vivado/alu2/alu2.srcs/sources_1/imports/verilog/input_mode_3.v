@@ -45,6 +45,7 @@ module input_mode_3 (
   always @* begin
     M_astore_d = M_astore_q;
     M_zvnstore_d = M_zvnstore_q;
+    M_alufnstore_d = M_alufnstore_q;
     M_bstore_d = M_bstore_q;
     M_outstore_d = M_outstore_q;
     
@@ -60,7 +61,7 @@ module input_mode_3 (
       M_outstore_d = iodip;
     end
     if (io_button[2+0-:1]) begin
-      M_aluUnit_alufn = iodip[0+5-:6];
+      M_alufnstore_d = iodip[0+5-:6];
       M_outstore_d = iodip;
     end
     if (io_button[3+0-:1]) begin
@@ -70,15 +71,6 @@ module input_mode_3 (
     zvn = M_zvnstore_q;
     out = M_outstore_q;
   end
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_astore_q <= 1'h0;
-    end else begin
-      M_astore_q <= M_astore_d;
-    end
-  end
-  
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
@@ -100,18 +92,27 @@ module input_mode_3 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_bstore_q <= 1'h0;
+      M_zvnstore_q <= 1'h0;
     end else begin
-      M_bstore_q <= M_bstore_d;
+      M_zvnstore_q <= M_zvnstore_d;
     end
   end
   
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_zvnstore_q <= 1'h0;
+      M_astore_q <= 1'h0;
     end else begin
-      M_zvnstore_q <= M_zvnstore_d;
+      M_astore_q <= M_astore_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_bstore_q <= 1'h0;
+    end else begin
+      M_bstore_q <= M_bstore_d;
     end
   end
   
