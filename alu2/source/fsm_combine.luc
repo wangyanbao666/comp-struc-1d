@@ -1,0 +1,55 @@
+module fsm_combine (
+    input clk,  // clock
+    input rst,  // reset
+    input iobutton[5],
+    input iodip[16],
+    output seg[8],
+    output sel[4],
+    output out[16]
+  ) {
+  input_mode inmode(.clk(clk),.rst(rst));
+  fsm_test fsmt(.clk(clk),.rst(rst));
+  fsm changemode(.clk(clk),.rst(rst))={S0,S1};
+  button_conditioner buttoncond[5](.clk(clk));
+  edge_detector buttondetector[5](#RISE(1), #FALL(0),.clk(clk)); 
+  multi_seven_seg mss(.clk(clk),.rst(rst));
+  sig button[5];
+  sig z[4];
+  sig v[4];
+  sig n[4];
+  sig s[4];
+  always {
+    
+    buttoncond.in = iobutton[4:0];
+    buttondetector.in = buttoncond.out;
+    button = buttondetector.out;
+    inmode.io_button = button[3:0];
+    out = 0;
+    s = 0;
+    inmode.iodip=iodip;
+    fsmt.iodip=iodip[0];
+    case(changemode.q){
+      changemode.S0:
+      out = inmode.out;
+      z = inmode.zvn[2];
+      v = inmode.zvn[1];
+      n = inmode.zvn[0];
+      if (button[4]){
+          changemode.d=changemode.S1;
+      }
+      changemode.S1:
+      out = fsmt.out_calc;
+      //mss.values = fsmt.zvn_out;
+      s = fsmt.seg;
+      z = fsmt.zvn_out[2];
+      v = fsmt.zvn_out[1];
+      n = fsmt.zvn_out[0];
+      if (button[4]){
+          changemode.d=changemode.S0;
+      }
+      default:z=0;v=0;n=0;
+    }
+    mss.values={z,v,n,s};
+    seg = ~mss.seg;
+    sel = ~mss.sel;
+}

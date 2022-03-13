@@ -1,0 +1,52 @@
+Starting Vivado...
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source {E:\comp struc\project\alu\work\project.tcl}
+# set projDir "E:/comp\ struc/project/alu/work/vivado"
+# set projName "alu"
+# set topName top
+# set device xc7a35tftg256-1
+# if {[file exists "$projDir/$projName"]} { file delete -force "$projDir/$projName" }
+# create_project $projName "$projDir/$projName" -part $device
+# set_property design_mode RTL [get_filesets sources_1]
+# set verilogSources [list "E:/comp\ struc/project/alu/work/verilog/au_top_0.v" "E:/comp\ struc/project/alu/work/verilog/reset_conditioner_1.v" ]
+# import_files -fileset [get_filesets sources_1] -force -norecurse $verilogSources
+# set xdcSources [list "E:/comp\ struc/project/alu/work/constraint/alchitry.xdc" "E:/comp\ struc/library/components/au.xdc" ]
+# read_xdc $xdcSources
+# set_property STEPS.WRITE_BITSTREAM.ARGS.BIN_FILE true [get_runs impl_1]
+# update_compile_order -fileset sources_1
+# launch_runs -runs synth_1 -jobs 8
+[Mon Mar  7 15:52:04 2022] Launched synth_1...
+Run output will be captured here: E:/comp struc/project/alu/work/vivado/alu/alu.runs/synth_1/runme.log
+# wait_on_run synth_1
+[Mon Mar  7 15:52:05 2022] Waiting for synth_1 to finish...
+
+
+*** Running vivado
+    with args -log au_top_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source au_top_0.tcl
+
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source au_top_0.tcl -notrace
+Command: synth_design -top au_top_0 -part xc7a35tftg256-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
+INFO: [Device 21-403] Loading part xc7a35tftg256-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 15212
+
+Build aborted by user.
+Vivado exited.
+
+Bin file (E:\comp struc\project\alu\work\vivado\alu\alu.runs\impl_1\au_top_0.bin) could not be found! The build probably failed.
