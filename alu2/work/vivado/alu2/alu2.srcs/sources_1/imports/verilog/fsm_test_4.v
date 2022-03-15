@@ -17,7 +17,7 @@ module fsm_test_4 (
   
   
   wire [1-1:0] M_slowclock_value;
-  counter_9 slowclock (
+  counter_11 slowclock (
     .clk(clk),
     .rst(rst),
     .value(M_slowclock_value)
@@ -54,7 +54,7 @@ module fsm_test_4 (
   wire [3-1:0] M_r_outZVN;
   wire [16-1:0] M_r_out;
   reg [5-1:0] M_r_address;
-  rom_10 r (
+  rom_12 r (
     .address(M_r_address),
     .outA(M_r_outA),
     .outB(M_r_outB),
@@ -70,7 +70,7 @@ module fsm_test_4 (
   reg [16-1:0] M_aluUnit_a;
   reg [16-1:0] M_aluUnit_b;
   reg [6-1:0] M_aluUnit_alufn;
-  alu_8 aluUnit (
+  alu_10 aluUnit (
     .a(M_aluUnit_a),
     .b(M_aluUnit_b),
     .alufn(M_aluUnit_alufn),

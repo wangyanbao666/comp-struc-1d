@@ -84,26 +84,30 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_15.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_8.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/boolean_17.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_19.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_10.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/boolean_21.v}
   {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/button_conditioner_5.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_16.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_12.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_9.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/decoder_14.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_20.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_11.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_14.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/decoder_16.v}
   {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/edge_detector_6.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/find_neighbor_20.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/flip_19.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/find_neighbor_24.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/flip_23.v}
   {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_combine_1.v}
   {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_test_4.v}
   {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/input_mode_3.v}
   {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/multi_seven_seg_7.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/pipeline_11.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/pipeline_13.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/pn_gen_17.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/random_choose_9.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/random_rom_18.v}
   {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/reset_conditioner_2.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/rom_10.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/seven_seg_13.v}
-  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/shifter_18.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/rom_12.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/seven_seg_15.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/shifter_22.v}
+  {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/time_countdown_8.v}
   {E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/au_top_0.v}
 }
 OPTRACE "Adding files" END { }

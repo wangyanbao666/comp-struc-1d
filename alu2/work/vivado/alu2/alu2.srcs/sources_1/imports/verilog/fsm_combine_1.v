@@ -45,10 +45,12 @@ module fsm_combine_1 (
   );
   
   
-  localparam S0_changemode = 1'd0;
-  localparam S1_changemode = 1'd1;
+  localparam S0_changemode = 2'd0;
+  localparam S1_changemode = 2'd1;
+  localparam S2_changemode = 2'd2;
+  localparam S3_changemode = 2'd3;
   
-  reg M_changemode_d, M_changemode_q = S0_changemode;
+  reg [1:0] M_changemode_d, M_changemode_q = S0_changemode;
   
   wire [(3'h5+0)-1:0] M_buttoncond_out;
   reg [(3'h5+0)-1:0] M_buttoncond_in;
@@ -89,6 +91,24 @@ module fsm_combine_1 (
     .sel(M_mss_sel)
   );
   
+  wire [16-1:0] M_count_out;
+  reg [1-1:0] M_count_dip;
+  time_countdown_8 count (
+    .clk(clk),
+    .rst(rst),
+    .dip(M_count_dip),
+    .out(M_count_out)
+  );
+  
+  wire [4-1:0] M_randchoose_out;
+  reg [1-1:0] M_randchoose_button;
+  random_choose_9 randchoose (
+    .clk(clk),
+    .rst(rst),
+    .button(M_randchoose_button),
+    .out(M_randchoose_out)
+  );
+  
   reg [4:0] button;
   
   reg [3:0] z;
@@ -106,10 +126,12 @@ module fsm_combine_1 (
     M_buttondetector_in = M_buttoncond_out;
     button = M_buttondetector_out;
     M_inmode_io_button = button[0+3-:4];
-    out = 1'h0;
-    s = 1'h0;
+    out = 16'h0000;
+    s = 4'h0;
     M_inmode_iodip = iodip;
     M_fsmt_iodip = iodip[0+0-:1];
+    M_count_dip = iodip[0+0-:1];
+    M_randchoose_button = button[0+0-:1];
     
     case (M_changemode_q)
       S0_changemode: begin
@@ -117,6 +139,9 @@ module fsm_combine_1 (
         z = M_inmode_zvn[2+0-:1];
         v = M_inmode_zvn[1+0-:1];
         n = M_inmode_zvn[0+0-:1];
+        M_mss_values = {z, v, n, s};
+        seg = ~M_mss_seg;
+        sel = ~M_mss_sel;
         if (button[4+0-:1]) begin
           M_changemode_d = S1_changemode;
         end
@@ -127,19 +152,38 @@ module fsm_combine_1 (
         z = M_fsmt_zvn_out[2+0-:1];
         v = M_fsmt_zvn_out[1+0-:1];
         n = M_fsmt_zvn_out[0+0-:1];
+        M_mss_values = {z, v, n, s};
+        seg = ~M_mss_seg;
+        sel = ~M_mss_sel;
+        if (button[4+0-:1]) begin
+          M_changemode_d = S2_changemode;
+        end
+      end
+      S2_changemode: begin
+        M_mss_values = M_count_out;
+        seg = ~M_mss_seg;
+        sel = ~M_mss_sel;
+        sel[3+0-:1] = 1'h1;
+        if (button[4+0-:1]) begin
+          M_changemode_d = S3_changemode;
+        end
+      end
+      S3_changemode: begin
+        out[0+3-:4] = M_randchoose_out;
+        M_mss_values = {M_randchoose_out, M_randchoose_out, M_randchoose_out, M_randchoose_out};
+        seg = ~M_mss_seg;
+        sel = ~M_mss_sel;
+        sel[1+2-:3] = 3'h7;
         if (button[4+0-:1]) begin
           M_changemode_d = S0_changemode;
         end
       end
       default: begin
-        z = 1'h0;
-        v = 1'h0;
-        n = 1'h0;
+        M_mss_values = 16'h0000;
+        seg = 8'h00;
+        sel = 11'h457;
       end
     endcase
-    M_mss_values = {z, v, n, s};
-    seg = ~M_mss_seg;
-    sel = ~M_mss_sel;
   end
   
   always @(posedge clk) begin

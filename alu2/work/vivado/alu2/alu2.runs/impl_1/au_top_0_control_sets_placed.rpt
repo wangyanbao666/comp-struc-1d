@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Sun Mar 13 23:58:10 2022
+| Date         : Tue Mar 15 17:22:35 2022
 | Host         : DESKTOP-F3P71CO running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file au_top_0_control_sets_placed.rpt
 | Design       : au_top_0
@@ -23,11 +23,11 @@ Table of Contents
 +----------------------------------------------------------+-------+
 |                          Status                          | Count |
 +----------------------------------------------------------+-------+
-| Total control sets                                       |    13 |
-|    Minimum number of control sets                        |    13 |
+| Total control sets                                       |    14 |
+|    Minimum number of control sets                        |    14 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    31 |
+| Unused register locations in slices containing registers |    35 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -39,15 +39,15 @@ Table of Contents
 +--------------------+-------+
 |       Fanout       | Count |
 +--------------------+-------+
-| Total control sets |    13 |
+| Total control sets |    14 |
 | >= 0 to < 4        |     0 |
 | >= 4 to < 6        |     1 |
 | >= 6 to < 8        |     1 |
 | >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     0 |
+| >= 10 to < 12      |     1 |
 | >= 12 to < 14      |     0 |
-| >= 14 to < 16      |     1 |
-| >= 16              |    10 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    11 |
 +--------------------+-------+
 * Control sets can be remapped at either synth_design or opt_design
 
@@ -58,34 +58,35 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              15 |            9 |
+| No           | No                    | No                     |              16 |           10 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              51 |           15 |
+| No           | Yes                   | No                     |              63 |           20 |
 | Yes          | No                    | No                     |               0 |            0 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             175 |           60 |
+| Yes          | Yes                   | No                     |             302 |           83 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+----------------------------------------+-----------------------------------------------------------+------------------------------------------------------------+------------------+----------------+--------------+
-|              Clock Signal              |                       Enable Signal                       |                      Set/Reset Signal                      | Slice Load Count | Bel Load Count | Bels / Slice |
-+----------------------------------------+-----------------------------------------------------------+------------------------------------------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG                         |                                                           | reset_cond/M_reset_cond_in                                 |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG                         | fsmc/buttoncond_gen_0[2].buttoncond/E[0]                  | reset_cond/Q[0]                                            |                2 |              6 |         3.00 |
-|  clk_IBUF_BUFG                         |                                                           |                                                            |                9 |             15 |         1.67 |
-|  clk_IBUF_BUFG                         | fsmc/buttoncond_gen_0[0].buttoncond/E[0]                  | reset_cond/Q[0]                                            |                8 |             16 |         2.00 |
-|  clk_IBUF_BUFG                         | fsmc/buttoncond_gen_0[1].buttoncond/M_last_q_reg[0]       | reset_cond/Q[0]                                            |                7 |             16 |         2.29 |
-|  clk_IBUF_BUFG                         | fsmc/buttoncond_gen_0[1].buttoncond/E[0]                  | reset_cond/Q[0]                                            |               13 |             16 |         1.23 |
-|  clk_IBUF_BUFG                         | fsmc/buttoncond_gen_0[0].buttoncond/M_ctr_q[0]_i_2__2_n_0 | fsmc/buttoncond_gen_0[0].buttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG                         | fsmc/buttoncond_gen_0[1].buttoncond/M_ctr_q[0]_i_2__1_n_0 | fsmc/buttoncond_gen_0[1].buttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG                         | fsmc/buttoncond_gen_0[2].buttoncond/M_ctr_q[0]_i_2__0_n_0 | fsmc/buttoncond_gen_0[2].buttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG                         | fsmc/buttoncond_gen_0[3].buttoncond/M_ctr_q[0]_i_2_n_0    | fsmc/buttoncond_gen_0[3].buttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG                         | fsmc/buttoncond_gen_0[4].buttoncond/sel                   | fsmc/buttoncond_gen_0[4].buttoncond/sync/clear             |                5 |             20 |         4.00 |
-|  fsmc/fsmt/slowclock/M_ctr_q_reg[26]_0 | fsmc/fsmt/FSM_onehot_M_fsm_t_q[20]_i_1_n_0                | reset_cond/Q[0]                                            |                5 |             21 |         4.20 |
-|  clk_IBUF_BUFG                         |                                                           | reset_cond/Q[0]                                            |               13 |             47 |         3.62 |
-+----------------------------------------+-----------------------------------------------------------+------------------------------------------------------------+------------------+----------------+--------------+
++-------------------------+-----------------------------------------------------------+------------------------------------------------------------+------------------+----------------+--------------+
+|       Clock Signal      |                       Enable Signal                       |                      Set/Reset Signal                      | Slice Load Count | Bel Load Count | Bels / Slice |
++-------------------------+-----------------------------------------------------------+------------------------------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG          |                                                           | reset_cond/M_reset_cond_in                                 |                2 |              4 |         2.00 |
+|  clk_IBUF_BUFG          | fsmc/buttoncond_gen_0[2].buttoncond/E[0]                  | reset_cond/Q[0]                                            |                2 |              6 |         3.00 |
+|  fsmt/M_slowclock_value |                                                           | reset_cond/Q[0]                                            |                5 |             11 |         2.20 |
+|  clk_IBUF_BUFG          |                                                           |                                                            |               10 |             16 |         1.60 |
+|  clk_IBUF_BUFG          | fsmc/buttoncond_gen_0[1].buttoncond/E[0]                  | reset_cond/Q[0]                                            |               12 |             16 |         1.33 |
+|  clk_IBUF_BUFG          | fsmc/buttoncond_gen_0[1].buttoncond/M_last_q_reg[0]       | reset_cond/Q[0]                                            |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG          | fsmc/buttoncond_gen_0[0].buttoncond/M_ctr_q[0]_i_2_n_0    | fsmc/buttoncond_gen_0[0].buttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG          | fsmc/buttoncond_gen_0[1].buttoncond/M_ctr_q[0]_i_2__3_n_0 | fsmc/buttoncond_gen_0[1].buttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG          | fsmc/buttoncond_gen_0[2].buttoncond/M_ctr_q[0]_i_2__2_n_0 | fsmc/buttoncond_gen_0[2].buttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG          | fsmc/buttoncond_gen_0[3].buttoncond/M_ctr_q[0]_i_2__1_n_0 | fsmc/buttoncond_gen_0[3].buttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG          | fsmc/buttoncond_gen_0[4].buttoncond/sel                   | fsmc/buttoncond_gen_0[4].buttoncond/sync/clear             |                5 |             20 |         4.00 |
+|  fsmt/M_slowclock_value | fsmc/fsmt/FSM_onehot_M_fsm_t_q[20]_i_1_n_0                | reset_cond/Q[0]                                            |                5 |             21 |         4.20 |
+|  clk_IBUF_BUFG          |                                                           | reset_cond/Q[0]                                            |               13 |             48 |         3.69 |
+|  clk_IBUF_BUFG          | fsmc/buttoncond_gen_0[0].buttoncond/M_randchoose_button   | reset_cond/Q[0]                                            |               31 |            143 |         4.61 |
++-------------------------+-----------------------------------------------------------+------------------------------------------------------------+------------------+----------------+--------------+
 
 

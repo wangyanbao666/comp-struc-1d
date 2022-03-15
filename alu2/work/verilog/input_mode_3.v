@@ -22,7 +22,7 @@ module input_mode_3 (
   reg [16-1:0] M_aluUnit_a;
   reg [16-1:0] M_aluUnit_b;
   reg [6-1:0] M_aluUnit_alufn;
-  alu_8 aluUnit (
+  alu_10 aluUnit (
     .a(M_aluUnit_a),
     .b(M_aluUnit_b),
     .alufn(M_aluUnit_alufn),
@@ -74,27 +74,9 @@ module input_mode_3 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_alufnstore_q <= 1'h0;
-    end else begin
-      M_alufnstore_q <= M_alufnstore_d;
-    end
-  end
-  
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
       M_outstore_q <= 1'h0;
     end else begin
       M_outstore_q <= M_outstore_d;
-    end
-  end
-  
-  
-  always @(posedge clk) begin
-    if (rst == 1'b1) begin
-      M_zvnstore_q <= 1'h0;
-    end else begin
-      M_zvnstore_q <= M_zvnstore_d;
     end
   end
   
@@ -110,9 +92,27 @@ module input_mode_3 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
+      M_zvnstore_q <= 1'h0;
+    end else begin
+      M_zvnstore_q <= M_zvnstore_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
       M_bstore_q <= 1'h0;
     end else begin
       M_bstore_q <= M_bstore_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_alufnstore_q <= 1'h0;
+    end else begin
+      M_alufnstore_q <= M_alufnstore_d;
     end
   end
   
