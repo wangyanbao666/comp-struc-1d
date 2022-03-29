@@ -1,0 +1,35 @@
+pin player[0] C2;
+pin player[1] C5;
+pin player[2] C8;
+pin player[3] C48;
+pin player[4] C45;
+pin player[5] C42;
+pin player[6] C49;
+pin player[7] C46;
+pin player[8] C43;
+
+pin pattern[0] D2;
+pin pattern[1] D5;
+pin pattern[2] D8;
+pin pattern[3] D48;
+pin pattern[4] D45;
+pin pattern[5] D42;
+pin pattern[6] D49;
+pin pattern[7] D46;
+pin pattern[8] D43;
+
+pin button[0] A2 pulldown;
+pin button[1] A5 pulldown;
+pin button[2] A8 pulldown;
+pin button[3] A48 pulldown; 
+pin button[4] A45 pulldown;
+pin button[5] A42 pulldown;
+pin button[6] A49 pulldown;
+pin button[7] A46 pulldown;
+pin button[8] A43 pulldown;
+
+pin clear_button A3 pulldown;
+pin reset_button A9 pulldown;
+pin pass_button A6 pulldown;
+
+

@@ -1,7 +1,7 @@
 module time_countdown (
     input clk,  // clock
     input rst,  // reset
-    input dip,
+    input reset_button,
     output out[4][4]
   ) {
   counter slowclock(#SIZE(1),#DIV(26),.clk(clk),.rst(rst));
@@ -30,7 +30,7 @@ module time_countdown (
     else {
       digit[0] = digit[0]-1;
       }
-    if (dip){
+    if (reset_button){
       digit[0] = 4d0;
       digit[1] = 4d2;
       digit[2] = 4d1;
