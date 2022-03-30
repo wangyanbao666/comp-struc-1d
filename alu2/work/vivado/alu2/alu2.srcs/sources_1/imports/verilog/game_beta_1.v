@@ -29,7 +29,7 @@ module game_beta_1 (
   
   reg M_z_d, M_z_q = 1'h0;
   
-  reg [2:0] M_address1_d, M_address1_q = 1'h0;
+  reg [2:0] M_address_d, M_address_q = 1'h0;
   
   wire [16-1:0] M_game_alu_out;
   wire [1-1:0] M_game_alu_z;
@@ -38,7 +38,7 @@ module game_beta_1 (
   reg [16-1:0] M_game_alu_a;
   reg [16-1:0] M_game_alu_b;
   reg [6-1:0] M_game_alu_alufn;
-  alu_3 game_alu (
+  alu_4 game_alu (
     .a(M_game_alu_a),
     .b(M_game_alu_b),
     .alufn(M_game_alu_alufn),
@@ -62,7 +62,7 @@ module game_beta_1 (
   reg [1-1:0] M_game_controlunit_reset_button;
   reg [1-1:0] M_game_controlunit_z;
   reg [16-1:0] M_game_controlunit_time;
-  game_cu_4 game_controlunit (
+  game_cu_5 game_controlunit (
     .clk(clk),
     .rst(rst),
     .button(M_game_controlunit_button),
@@ -88,7 +88,7 @@ module game_beta_1 (
   reg [16-1:0] M_regfile_wr_data;
   reg [4-1:0] M_regfile_wrsel;
   reg [1-1:0] M_regfile_we;
-  game_regfile_5 regfile (
+  game_regfile_6 regfile (
     .clk(clk),
     .rst(rst),
     .wr_data(M_regfile_wr_data),
@@ -102,7 +102,7 @@ module game_beta_1 (
   
   wire [32-1:0] M_rand_num_num;
   reg [1-1:0] M_rand_num_next;
-  pn_gen_6 rand_num (
+  pn_gen_7 rand_num (
     .clk(clk),
     .rst(rst),
     .seed(32'h00000100),
@@ -111,17 +111,17 @@ module game_beta_1 (
   );
   
   wire [16-1:0] M_patterns_out;
-  reg [3-1:0] M_patterns_address1;
-  reg [16-1:0] M_patterns_address2;
-  pattern_rom_7 patterns (
-    .address1(M_patterns_address1),
-    .address2(M_patterns_address2),
+  reg [3-1:0] M_patterns_addressr;
+  reg [16-1:0] M_patterns_addressl;
+  pattern_rom_8 patterns (
+    .addressr(M_patterns_addressr),
+    .addressl(M_patterns_addressl),
     .out(M_patterns_out)
   );
   
   wire [8-1:0] M_increasor_out;
   reg [1-1:0] M_increasor_increase;
-  increase_score_8 increasor (
+  increase_score_9 increasor (
     .clk(clk),
     .rst(rst),
     .increase(M_increasor_increase),
@@ -134,7 +134,7 @@ module game_beta_1 (
   genvar GEN_playerbuttoncond0;
   generate
   for (GEN_playerbuttoncond0=0;GEN_playerbuttoncond0<4'h9;GEN_playerbuttoncond0=GEN_playerbuttoncond0+1) begin: playerbuttoncond_gen_0
-    button_conditioner_9 playerbuttoncond (
+    button_conditioner_10 playerbuttoncond (
       .clk(clk),
       .in(M_playerbuttoncond_in[GEN_playerbuttoncond0*(1)+(1)-1-:(1)]),
       .out(M_playerbuttoncond_out[GEN_playerbuttoncond0*(1)+(1)-1-:(1)])
@@ -148,7 +148,7 @@ module game_beta_1 (
   genvar GEN_playerbuttondetector0;
   generate
   for (GEN_playerbuttondetector0=0;GEN_playerbuttondetector0<4'h9;GEN_playerbuttondetector0=GEN_playerbuttondetector0+1) begin: playerbuttondetector_gen_0
-    edge_detector_10 playerbuttondetector (
+    edge_detector_11 playerbuttondetector (
       .clk(clk),
       .in(M_playerbuttondetector_in[GEN_playerbuttondetector0*(1)+(1)-1-:(1)]),
       .out(M_playerbuttondetector_out[GEN_playerbuttondetector0*(1)+(1)-1-:(1)])
@@ -158,7 +158,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_clearbuttoncond_out;
   reg [1-1:0] M_clearbuttoncond_in;
-  button_conditioner_9 clearbuttoncond (
+  button_conditioner_10 clearbuttoncond (
     .clk(clk),
     .in(M_clearbuttoncond_in),
     .out(M_clearbuttoncond_out)
@@ -166,7 +166,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_clearbuttondetector_out;
   reg [1-1:0] M_clearbuttondetector_in;
-  edge_detector_10 clearbuttondetector (
+  edge_detector_11 clearbuttondetector (
     .clk(clk),
     .in(M_clearbuttondetector_in),
     .out(M_clearbuttondetector_out)
@@ -174,7 +174,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_passbuttoncond_out;
   reg [1-1:0] M_passbuttoncond_in;
-  button_conditioner_9 passbuttoncond (
+  button_conditioner_10 passbuttoncond (
     .clk(clk),
     .in(M_passbuttoncond_in),
     .out(M_passbuttoncond_out)
@@ -182,7 +182,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_passbuttondetector_out;
   reg [1-1:0] M_passbuttondetector_in;
-  edge_detector_10 passbuttondetector (
+  edge_detector_11 passbuttondetector (
     .clk(clk),
     .in(M_passbuttondetector_in),
     .out(M_passbuttondetector_out)
@@ -190,7 +190,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_resetbuttoncond_out;
   reg [1-1:0] M_resetbuttoncond_in;
-  button_conditioner_9 resetbuttoncond (
+  button_conditioner_10 resetbuttoncond (
     .clk(clk),
     .in(M_resetbuttoncond_in),
     .out(M_resetbuttoncond_out)
@@ -198,22 +198,22 @@ module game_beta_1 (
   
   wire [1-1:0] M_resetbuttondetector_out;
   reg [1-1:0] M_resetbuttondetector_in;
-  edge_detector_10 resetbuttondetector (
+  edge_detector_11 resetbuttondetector (
     .clk(clk),
     .in(M_resetbuttondetector_in),
     .out(M_resetbuttondetector_out)
   );
   
   always @* begin
-    M_address1_d = M_address1_q;
+    M_address_d = M_address_q;
     M_z_d = M_z_q;
     
     M_rand_num_next = 1'h0;
     if (reset_button) begin
       M_rand_num_next = 1'h1;
-      M_address1_d = M_rand_num_num[0+2-:3];
+      M_address_d = M_rand_num_num[0+2-:3];
     end else begin
-      M_address1_d = M_address1_q;
+      M_address_d = M_address_q;
     end
     M_playerbuttoncond_in = play_button;
     M_playerbuttondetector_in = M_playerbuttoncond_out;
@@ -232,8 +232,8 @@ module game_beta_1 (
     M_regfile_wr_data = 16'h0000;
     M_regfile_wrsel = M_game_controlunit_wr;
     M_regfile_we = M_game_controlunit_we;
-    M_patterns_address1 = M_address1_q;
-    M_patterns_address2 = M_regfile_level;
+    M_patterns_addressr = M_address_q;
+    M_patterns_addressl = M_regfile_level;
     increase = M_game_controlunit_increase;
     M_increasor_increase = increase;
     
@@ -296,18 +296,18 @@ module game_beta_1 (
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_address1_q <= 1'h0;
+      M_z_q <= 1'h0;
     end else begin
-      M_address1_q <= M_address1_d;
+      M_z_q <= M_z_d;
     end
   end
   
   
   always @(posedge clk) begin
     if (rst == 1'b1) begin
-      M_z_q <= 1'h0;
+      M_address_q <= 1'h0;
     end else begin
-      M_z_q <= M_z_d;
+      M_address_q <= M_address_d;
     end
   end
   

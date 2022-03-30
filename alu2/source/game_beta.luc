@@ -16,7 +16,7 @@ module game_beta (
   sig increase;
   sig wr_data[16];
   dff z(#INIT(0),.clk(clk),.rst(rst));
-  dff address1[3](#INIT(0),.clk(clk),.rst(rst));
+  dff address[3](#INIT(0),.clk(clk),.rst(rst));
   alu game_alu;
   game_cu game_controlunit(.clk(clk),.rst(rst));
   game_regfile regfile(.clk(clk),.rst(rst));
@@ -37,10 +37,10 @@ module game_beta (
     rand_num.next = 0;
     if (reset_button){
       rand_num.next = 1;
-      address1.d = rand_num.num[2:0];
+      address.d = rand_num.num[2:0];
       }
     else {
-      address1.d = address1.q;
+      address.d = address.q;
       }
 
     
@@ -67,8 +67,8 @@ module game_beta (
     regfile.we = game_controlunit.we;
     
     //input for rom
-    patterns.address1 = address1.q;
-    patterns.address2 = regfile.level;
+    patterns.addressr = address.q;
+    patterns.addressl = regfile.level;
     
     //input for increasor 
     increase = game_controlunit.increase;

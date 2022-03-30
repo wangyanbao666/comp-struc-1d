@@ -22,8 +22,6 @@ module au_top_0 (
   
   reg rst;
   
-  reg [15:0] time;
-  
   wire [16-1:0] M_beta_current_state;
   wire [16-1:0] M_beta_pattern;
   wire [8-1:0] M_beta_score;
@@ -45,9 +43,18 @@ module au_top_0 (
     .score(M_beta_score)
   );
   
+  wire [16-1:0] M_timer_out;
+  reg [1-1:0] M_timer_reset_button;
+  time_countdown_2 timer (
+    .clk(clk),
+    .rst(rst),
+    .reset_button(M_timer_reset_button),
+    .out(M_timer_out)
+  );
+  
   wire [1-1:0] M_reset_cond_out;
   reg [1-1:0] M_reset_cond_in;
-  reset_conditioner_2 reset_cond (
+  reset_conditioner_3 reset_cond (
     .clk(clk),
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
@@ -58,12 +65,13 @@ module au_top_0 (
     rst = M_reset_cond_out;
     led = 8'h00;
     usb_tx = usb_rx;
+    M_timer_reset_button = reset_button;
     M_beta_play_button = button;
     M_beta_pass_button = pass_button;
     M_beta_clear_button = clear_button;
     M_beta_reset_button = reset_button;
-    M_beta_time = 16'h0111;
-    player = M_beta_current_state[0+8-:9];
-    pattern = M_beta_pattern[0+8-:9];
+    M_beta_time = M_timer_out;
+    player = 9'h000;
+    pattern = 9'h000;
   end
 endmodule
