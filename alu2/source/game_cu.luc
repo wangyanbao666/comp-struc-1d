@@ -39,8 +39,6 @@ module game_cu (
     UPDATE_STATE8,
     UPDATE_STATE9,
     UPDATE_TRANS,
-    CHECK_TIME,
-    DECRESE_GAME_TIMER,
     GAMEOVER
     };
   always {
@@ -100,6 +98,9 @@ module game_cu (
         else if (pass_button){
           game_fsm.d = game_fsm.CHECK_LEVEL;
           }
+        else if (reset_button){
+          game_fsm.d = game_fsm.START;
+          }
         else {
           game_fsm.d = game_fsm.IDLE;
           }
@@ -118,7 +119,7 @@ module game_cu (
         alufn = 6b111111;
         wr = 16h1;
         button_sig = 16b1;
-        game_fsm.d = game_fsm.UPDATE_TRANS;
+        game_fsm.d = game_fsm.CHECK_PATTERN;
  
       game_fsm.UPDATE_STATE2:
         we = b1;
@@ -128,7 +129,7 @@ module game_cu (
         alufn = 6b111111;
         wr = 16h1;
         button_sig = 16b10;
-        game_fsm.d = game_fsm.UPDATE_TRANS;
+        game_fsm.d = game_fsm.CHECK_PATTERN;
       
       game_fsm.UPDATE_STATE3:
         we = b1;
@@ -138,7 +139,7 @@ module game_cu (
         alufn = 6b111111;
         wr = 16h1;
         button_sig = 16b100;
-        game_fsm.d = game_fsm.UPDATE_TRANS;
+        game_fsm.d = game_fsm.CHECK_PATTERN;
         
       game_fsm.UPDATE_STATE4:
         we = b1;
@@ -148,7 +149,7 @@ module game_cu (
         alufn = 6b111111;
         wr = 16h1;
         button_sig = 16b1000;
-        game_fsm.d = game_fsm.UPDATE_TRANS;
+        game_fsm.d = game_fsm.CHECK_PATTERN;
         
       game_fsm.UPDATE_STATE5:
         we = b1;
@@ -158,7 +159,7 @@ module game_cu (
         alufn = 6b111111;
         wr = 16h1;
         button_sig = 16b10000;
-        game_fsm.d = game_fsm.UPDATE_TRANS;
+        game_fsm.d = game_fsm.CHECK_PATTERN;
         
       game_fsm.UPDATE_STATE6:
         we = b1;
@@ -168,7 +169,7 @@ module game_cu (
         alufn = 6b111111;
         wr = 16h1;
         button_sig = 16b100000;
-        game_fsm.d = game_fsm.UPDATE_TRANS;
+        game_fsm.d = game_fsm.CHECK_PATTERN;
         
       game_fsm.UPDATE_STATE7:
         we = b1;
@@ -178,7 +179,7 @@ module game_cu (
         alufn = 6b111111;
         wr = 16h1;
         button_sig = 16b1000000;
-        game_fsm.d = game_fsm.UPDATE_TRANS;
+        game_fsm.d = game_fsm.CHECK_PATTERN;
         
       game_fsm.UPDATE_STATE8:
         we = b1;
@@ -188,7 +189,7 @@ module game_cu (
         alufn = 6b111111;
         wr = 16h1;
         button_sig = 16b10000000;
-        game_fsm.d = game_fsm.UPDATE_TRANS;
+        game_fsm.d = game_fsm.CHECK_PATTERN;
         
       game_fsm.UPDATE_STATE9:
         we = b1;
@@ -198,7 +199,14 @@ module game_cu (
         alufn = 6b111111;
         wr = 16h1;
         button_sig = 16b100000000;
+        game_fsm.d = game_fsm.CHECK_PATTERN;
+        
+      game_fsm.CHECK_PATTERN:
+        asel = 3b000;
+        bsel = 3b000;
+        alufn = 6b110011;
         game_fsm.d = game_fsm.UPDATE_TRANS;
+        
               
       game_fsm.UPDATE_TRANS:
         if (z==1){

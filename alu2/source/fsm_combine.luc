@@ -31,7 +31,7 @@ module fsm_combine (
     s = 4b0;
     inmode.iodip=iodip;
     fsmt.iodip=iodip[0];
-    count.dip = iodip[0];
+    count.reset_button = iodip[0];
     randchoose.button = button[0];
 
     case(changemode.q){

@@ -7,33 +7,43 @@
 module au_top_0 (
     input clk,
     input rst_n,
-    output reg [7:0] led,
     input usb_rx,
     output reg usb_tx,
-    output reg [23:0] io_led,
-    output reg [7:0] io_seg,
-    output reg [3:0] io_sel,
-    input [4:0] io_button,
-    input [23:0] io_dip
+    output reg light,
+    output reg [7:0] led,
+    input [8:0] button,
+    input clear_button,
+    input pass_button,
+    input reset_button,
+    output reg [8:0] player,
+    output reg [8:0] pattern
   );
   
   
   
   reg rst;
   
-  wire [8-1:0] M_fsmc_seg;
-  wire [4-1:0] M_fsmc_sel;
-  wire [16-1:0] M_fsmc_out;
-  reg [5-1:0] M_fsmc_iobutton;
-  reg [16-1:0] M_fsmc_iodip;
-  fsm_combine_1 fsmc (
+  reg [15:0] time;
+  
+  wire [16-1:0] M_beta_current_state;
+  wire [16-1:0] M_beta_pattern;
+  wire [8-1:0] M_beta_score;
+  reg [9-1:0] M_beta_play_button;
+  reg [1-1:0] M_beta_clear_button;
+  reg [1-1:0] M_beta_pass_button;
+  reg [1-1:0] M_beta_reset_button;
+  reg [16-1:0] M_beta_time;
+  game_beta_1 beta (
     .clk(clk),
     .rst(rst),
-    .iobutton(M_fsmc_iobutton),
-    .iodip(M_fsmc_iodip),
-    .seg(M_fsmc_seg),
-    .sel(M_fsmc_sel),
-    .out(M_fsmc_out)
+    .play_button(M_beta_play_button),
+    .clear_button(M_beta_clear_button),
+    .pass_button(M_beta_pass_button),
+    .reset_button(M_beta_reset_button),
+    .time(M_beta_time),
+    .current_state(M_beta_current_state),
+    .pattern(M_beta_pattern),
+    .score(M_beta_score)
   );
   
   wire [1-1:0] M_reset_cond_out;
@@ -47,14 +57,15 @@ module au_top_0 (
   always @* begin
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
-    usb_tx = usb_rx;
     led = 8'h00;
-    M_fsmc_iodip[0+7-:8] = io_dip[0+7-:8];
-    M_fsmc_iodip[8+7-:8] = io_dip[8+7-:8];
-    M_fsmc_iobutton = io_button;
-    io_seg = M_fsmc_seg;
-    io_sel = M_fsmc_sel;
-    io_led[0+7-:8] = M_fsmc_out[0+7-:8];
-    io_led[8+7-:8] = M_fsmc_out[8+7-:8];
+    usb_tx = usb_rx;
+    light = 1'h1;
+    M_beta_play_button = button;
+    M_beta_pass_button = pass_button;
+    M_beta_clear_button = clear_button;
+    M_beta_reset_button = reset_button;
+    M_beta_time = 16'h0111;
+    player = 9'h000;
+    pattern = 9'h000;
   end
 endmodule

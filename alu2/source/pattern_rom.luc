@@ -1,6 +1,6 @@
 module pattern_rom (
-    input address1[3],  // reset
-    input address2[16],
+    input addressr[3],  // reset
+    input addressl[16],
     output out[16]
   ) {
   const A = {
@@ -28,6 +28,6 @@ module pattern_rom (
     };
  
   always {
-    out = A[address1][address2[3:0]];
+    out = A[addressr][addressl[3:0]];
   }
 }

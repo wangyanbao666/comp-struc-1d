@@ -1,6 +1,6 @@
 
 *** Running vivado
-    with args -log au_top_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source au_top_0.tcl
+    with args -log alu_3.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source alu_3.tcl
 
 
 
@@ -9,256 +9,407 @@
   **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
     ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 
-source au_top_0.tcl -notrace
-Command: synth_design -top au_top_0 -part xc7a35tftg256-1
+source alu_3.tcl -notrace
+Command: synth_design -top alu_3 -part xc7a35tftg256-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Device 21-403] Loading part xc7a35tftg256-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 24156
+INFO: [Synth 8-7075] Helper process launched with PID 21772
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 999.004 ; gain = 0.000
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'au_top_0' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/au_top_0.v:7]
-INFO: [Synth 8-6157] synthesizing module 'fsm_combine_1' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_combine_1.v:7]
-	Parameter S0_changemode bound to: 2'b00 
-	Parameter S1_changemode bound to: 2'b01 
-	Parameter S2_changemode bound to: 2'b10 
-	Parameter S3_changemode bound to: 2'b11 
-INFO: [Synth 8-6157] synthesizing module 'button_conditioner_5' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/button_conditioner_5.v:13]
-	Parameter CLK_FREQ bound to: 26'b10111110101111000010000000 
-	Parameter MIN_DELAY bound to: 5'b10100 
-	Parameter NUM_SYNC bound to: 2'b10 
-INFO: [Synth 8-6157] synthesizing module 'pipeline_13' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/pipeline_13.v:11]
-	Parameter DEPTH bound to: 2'b10 
-INFO: [Synth 8-6155] done synthesizing module 'pipeline_13' (1#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/pipeline_13.v:11]
-INFO: [Synth 8-6155] done synthesizing module 'button_conditioner_5' (2#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/button_conditioner_5.v:13]
-INFO: [Synth 8-6157] synthesizing module 'edge_detector_6' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/edge_detector_6.v:12]
-	Parameter RISE bound to: 1'b1 
-	Parameter FALL bound to: 1'b0 
-INFO: [Synth 8-6155] done synthesizing module 'edge_detector_6' (3#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/edge_detector_6.v:12]
-INFO: [Synth 8-6157] synthesizing module 'input_mode_3' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/input_mode_3.v:7]
-INFO: [Synth 8-6157] synthesizing module 'alu_10' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_10.v:7]
-INFO: [Synth 8-6157] synthesizing module 'adder_19' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_19.v:7]
-INFO: [Synth 8-226] default block is never used [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_19.v:24]
-INFO: [Synth 8-6155] done synthesizing module 'adder_19' (4#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_19.v:7]
-INFO: [Synth 8-6157] synthesizing module 'comparator_20' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_20.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'comparator_20' (5#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_20.v:7]
-INFO: [Synth 8-6157] synthesizing module 'boolean_21' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/boolean_21.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'boolean_21' (6#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/boolean_21.v:7]
-INFO: [Synth 8-6157] synthesizing module 'shifter_22' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/shifter_22.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'shifter_22' (7#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/shifter_22.v:7]
-INFO: [Synth 8-6157] synthesizing module 'flip_23' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/flip_23.v:7]
-INFO: [Synth 8-6157] synthesizing module 'find_neighbor_24' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/find_neighbor_24.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'find_neighbor_24' (8#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/find_neighbor_24.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'flip_23' (9#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/flip_23.v:7]
-INFO: [Synth 8-226] default block is never used [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_10.v:107]
-INFO: [Synth 8-6155] done synthesizing module 'alu_10' (10#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_10.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'input_mode_3' (11#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/input_mode_3.v:7]
-INFO: [Synth 8-6157] synthesizing module 'fsm_test_4' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_test_4.v:7]
-	Parameter S0_fsm_t bound to: 5'b00000 
-	Parameter S1_fsm_t bound to: 5'b00001 
-	Parameter S2_fsm_t bound to: 5'b00010 
-	Parameter S3_fsm_t bound to: 5'b00011 
-	Parameter S4_fsm_t bound to: 5'b00100 
-	Parameter S5_fsm_t bound to: 5'b00101 
-	Parameter S6_fsm_t bound to: 5'b00110 
-	Parameter S7_fsm_t bound to: 5'b00111 
-	Parameter S8_fsm_t bound to: 5'b01000 
-	Parameter S9_fsm_t bound to: 5'b01001 
-	Parameter S10_fsm_t bound to: 5'b01010 
-	Parameter S11_fsm_t bound to: 5'b01011 
-	Parameter S12_fsm_t bound to: 5'b01100 
-	Parameter S13_fsm_t bound to: 5'b01101 
-	Parameter S14_fsm_t bound to: 5'b01110 
-	Parameter S15_fsm_t bound to: 5'b01111 
-	Parameter S16_fsm_t bound to: 5'b10000 
-	Parameter S17_fsm_t bound to: 5'b10001 
-	Parameter S18_fsm_t bound to: 5'b10010 
-	Parameter S19_fsm_t bound to: 5'b10011 
-	Parameter S20_fsm_t bound to: 5'b10100 
-INFO: [Synth 8-6157] synthesizing module 'counter_11' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_11.v:14]
-	Parameter SIZE bound to: 1'b1 
-	Parameter DIV bound to: 5'b11010 
-	Parameter TOP bound to: 1'b0 
-	Parameter UP bound to: 1'b1 
-	Parameter MAX_VALUE bound to: 27'b011111111111111111111111111 
-INFO: [Synth 8-6155] done synthesizing module 'counter_11' (12#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_11.v:14]
-INFO: [Synth 8-6157] synthesizing module 'rom_12' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/rom_12.v:7]
-	Parameter A bound to: 336'b000000000000000100000000000000011000000000000000011111111111111100000000000011110000000000001111000000000000111110100101111100001010010111110000101001011111000000000000000000010000000001111111100000000000000100000001000000000000000000000010111101011010111111110101101011111000101000001111000001010101111110001010000011110000000000010101 
-	Parameter B bound to: 336'b000000000000001000000000000000100111111111111111011111111111111100000000000001010000000000000101000000000000010111110101101011111111010110101111111101011010111100000000000000110000000000000101000000000000001100000000000000000000000110110111000110100001010111110101101011111111010110101111100010100000111100000101010111110000010110000000 
-	Parameter AL bound to: 126'b000000000001000001000000011000011110010110011000011110010110100000100001100011111111111111110011110011110101110101110111000010 
-	Parameter ZVN bound to: 66'b000001011011000000000000000000000000000000000000000000000000000000 
-	Parameter O bound to: 336'b000000000000001111111111111111110000000000000001111111111111111000000000000001010000000000001111000000000000101010100101101000001111010111111111010100000101111100000000000010000000000000000011111100000000000000000001101000000000000110100000000000000000000000000000000000010000000000000001000000000000000000000000000000010111001110000000 
-INFO: [Synth 8-6155] done synthesizing module 'rom_12' (13#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/rom_12.v:7]
-INFO: [Synth 8-155] case statement is not full and has no default [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_test_4.v:117]
-INFO: [Synth 8-6155] done synthesizing module 'fsm_test_4' (14#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_test_4.v:7]
-INFO: [Synth 8-6157] synthesizing module 'multi_seven_seg_7' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/multi_seven_seg_7.v:12]
-	Parameter DIGITS bound to: 3'b100 
-	Parameter DIV bound to: 5'b10000 
-	Parameter DIGIT_BITS bound to: 2'b10 
-INFO: [Synth 8-6157] synthesizing module 'counter_14' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_14.v:14]
-	Parameter SIZE bound to: 2'b10 
-	Parameter DIV bound to: 5'b10000 
-	Parameter TOP bound to: 4'b0011 
-	Parameter UP bound to: 1'b1 
-	Parameter MAX_VALUE bound to: 20'b00111111111111111111 
-INFO: [Synth 8-6155] done synthesizing module 'counter_14' (15#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/counter_14.v:14]
-INFO: [Synth 8-6157] synthesizing module 'seven_seg_15' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/seven_seg_15.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'seven_seg_15' (16#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/seven_seg_15.v:7]
-INFO: [Synth 8-6157] synthesizing module 'decoder_16' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/decoder_16.v:11]
-	Parameter WIDTH bound to: 2'b10 
-INFO: [Synth 8-6155] done synthesizing module 'decoder_16' (17#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/decoder_16.v:11]
-INFO: [Synth 8-6155] done synthesizing module 'multi_seven_seg_7' (18#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/multi_seven_seg_7.v:12]
-INFO: [Synth 8-6157] synthesizing module 'time_countdown_8' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/time_countdown_8.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'time_countdown_8' (19#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/time_countdown_8.v:7]
-INFO: [Synth 8-6157] synthesizing module 'random_choose_9' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/random_choose_9.v:7]
-INFO: [Synth 8-6157] synthesizing module 'pn_gen_17' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/pn_gen_17.v:11]
-	Parameter SEED bound to: 128'b10000100001100100011001101010010001110100110000100111001011001100100001000111011011000100010010101100010010110010010110001100010 
-INFO: [Synth 8-6155] done synthesizing module 'pn_gen_17' (20#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/pn_gen_17.v:11]
-INFO: [Synth 8-6157] synthesizing module 'random_rom_18' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/random_rom_18.v:7]
-	Parameter NUM bound to: 305419896 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'random_rom_18' (21#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/random_rom_18.v:7]
-INFO: [Synth 8-6155] done synthesizing module 'random_choose_9' (22#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/random_choose_9.v:7]
-INFO: [Synth 8-226] default block is never used [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_combine_1.v:136]
-INFO: [Synth 8-6155] done synthesizing module 'fsm_combine_1' (23#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/fsm_combine_1.v:7]
-INFO: [Synth 8-6157] synthesizing module 'reset_conditioner_2' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/reset_conditioner_2.v:11]
-	Parameter STAGES bound to: 3'b100 
-INFO: [Synth 8-6155] done synthesizing module 'reset_conditioner_2' (24#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/reset_conditioner_2.v:11]
-INFO: [Synth 8-6155] done synthesizing module 'au_top_0' (25#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/au_top_0.v:7]
+INFO: [Synth 8-6157] synthesizing module 'alu_3' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_3.v:7]
+INFO: [Synth 8-6157] synthesizing module 'adder_11' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_11.v:7]
+INFO: [Synth 8-226] default block is never used [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_11.v:24]
+INFO: [Synth 8-6155] done synthesizing module 'adder_11' (1#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/adder_11.v:7]
+INFO: [Synth 8-6157] synthesizing module 'comparator_12' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_12.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'comparator_12' (2#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_12.v:7]
+INFO: [Synth 8-6157] synthesizing module 'boolean_13' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/boolean_13.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'boolean_13' (3#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/boolean_13.v:7]
+INFO: [Synth 8-6157] synthesizing module 'shifter_14' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/shifter_14.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'shifter_14' (4#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/shifter_14.v:7]
+INFO: [Synth 8-6157] synthesizing module 'flip_15' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/flip_15.v:7]
+INFO: [Synth 8-6157] synthesizing module 'find_neighbor_17' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/find_neighbor_17.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'find_neighbor_17' (5#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/find_neighbor_17.v:7]
+INFO: [Synth 8-6155] done synthesizing module 'flip_15' (6#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/flip_15.v:7]
+INFO: [Synth 8-226] default block is never used [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_3.v:107]
+INFO: [Synth 8-6155] done synthesizing module 'alu_3' (7#1) [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/alu_3.v:7]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 999.004 ; gain = 0.000
+Finished RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 999.004 ; gain = 0.000
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 999.004 ; gain = 0.000
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.030 . Memory (MB): peak = 999.004 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.007 . Memory (MB): peak = 999.352 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [E:/comp struc/project/alu2/work/constraint/alchitry.xdc]
+WARNING: [Vivado 12-584] No ports matched 'clk'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:2]
+CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects [get_ports clk]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:2]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'clk'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:3]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:3]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'clk'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:4]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:4]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'rst_n'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:5]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:5]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'rst_n'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:6]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:6]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[0]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:7]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:7]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[0]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:8]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:8]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[1]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:9]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:9]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[1]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:10]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:10]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[2]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:11]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:11]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[2]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:12]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:12]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[3]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:13]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:13]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[3]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:14]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:14]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[4]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:15]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:15]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[4]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:16]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:16]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[5]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:17]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:17]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[5]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:18]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:18]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[6]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:19]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:19]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[6]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:20]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:20]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[7]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:21]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:21]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'led[7]'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:22]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:22]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'usb_rx'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:23]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:23]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'usb_rx'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:24]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:24]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'usb_tx'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:25]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:25]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'usb_tx'. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:26]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/alchitry.xdc:26]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 Finished Parsing XDC File [E:/comp struc/project/alu2/work/constraint/alchitry.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/comp struc/project/alu2/work/constraint/alchitry.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Parsing XDC File [E:/comp struc/project/alu2/work/constraint/io.xdc]
+WARNING: [Vivado 12-584] No ports matched 'player[0]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:1]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:1]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[0]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:2]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:2]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[1]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:3]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:3]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[1]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:4]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:4]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[2]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:5]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:5]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[2]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:6]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:6]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[3]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:7]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:7]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[3]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:8]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:8]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[4]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:9]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:9]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[4]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:10]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:10]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[5]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:11]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:11]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[5]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:12]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:12]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[6]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:13]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:13]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[6]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:14]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:14]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[7]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:15]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:15]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[7]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:16]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:16]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[8]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:17]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:17]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'player[8]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:18]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:18]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[0]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:19]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:19]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[0]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:20]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:20]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[1]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:21]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:21]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[1]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:22]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:22]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[2]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:23]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:23]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[2]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:24]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:24]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[3]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:25]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:25]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[3]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:26]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:26]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[4]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:27]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:27]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[4]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:28]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:28]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[5]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:29]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:29]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[5]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:30]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:30]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[6]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:31]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:31]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[6]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:32]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:32]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[7]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:33]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:33]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[7]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:34]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:34]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[8]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:35]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:35]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pattern[8]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:36]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:36]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[0]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:37]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:37]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[0]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:38]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:38]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[0]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:39]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:39]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[1]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:40]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:40]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[1]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:41]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:41]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[1]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:42]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:42]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[2]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:43]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:43]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[2]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:44]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:44]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[2]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:45]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:45]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[3]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:46]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:46]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[3]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:47]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:47]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[3]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:48]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:48]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[4]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:49]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:49]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[4]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:50]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:50]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[4]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:51]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:51]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[5]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:52]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:52]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[5]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:53]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:53]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[5]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:54]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:54]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[6]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:55]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:55]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[6]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:56]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:56]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[6]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:57]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:57]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[7]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:58]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:58]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[7]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:59]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:59]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[7]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:60]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:60]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[8]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:61]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:61]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[8]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:62]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:62]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'button[8]'. [E:/comp struc/project/alu2/work/constraint/io.xdc:63]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:63]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'clear_button'. [E:/comp struc/project/alu2/work/constraint/io.xdc:64]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:64]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'clear_button'. [E:/comp struc/project/alu2/work/constraint/io.xdc:65]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:65]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'clear_button'. [E:/comp struc/project/alu2/work/constraint/io.xdc:66]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:66]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'reset_button'. [E:/comp struc/project/alu2/work/constraint/io.xdc:67]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:67]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'reset_button'. [E:/comp struc/project/alu2/work/constraint/io.xdc:68]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:68]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'reset_button'. [E:/comp struc/project/alu2/work/constraint/io.xdc:69]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:69]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pass_button'. [E:/comp struc/project/alu2/work/constraint/io.xdc:70]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:70]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pass_button'. [E:/comp struc/project/alu2/work/constraint/io.xdc:71]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:71]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'pass_button'. [E:/comp struc/project/alu2/work/constraint/io.xdc:72]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/work/constraint/io.xdc:72]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
 Finished Parsing XDC File [E:/comp struc/project/alu2/work/constraint/io.xdc]
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/comp struc/project/alu2/work/constraint/io.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/au_top_0_propImpl.xdc].
-Resolution: To avoid this warning, move constraints listed in [.Xil/au_top_0_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
-Parsing XDC File [E:/comp struc/library/components/au.xdc]
-Finished Parsing XDC File [E:/comp struc/library/components/au.xdc]
+Parsing XDC File [E:/comp struc/project/alu2/constraint/au.xdc]
+WARNING: [Vivado 12-584] No ports matched 'clk'. [E:/comp struc/project/alu2/constraint/au.xdc:1]
+CRITICAL WARNING: [Vivado 12-4739] create_clock:No valid object(s) found for '-objects [get_ports clk]'. [E:/comp struc/project/alu2/constraint/au.xdc:1]
+Resolution: Check if the specified object(s) exists in the current design. If it does, ensure that the correct design hierarchy was specified for the object. If you are working with clocks, make sure create_clock was used to create the clock object before it is referenced.
+WARNING: [Vivado 12-584] No ports matched 'clk'. [E:/comp struc/project/alu2/constraint/au.xdc:2]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/constraint/au.xdc:2]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+WARNING: [Vivado 12-584] No ports matched 'clk'. [E:/comp struc/project/alu2/constraint/au.xdc:3]
+INFO: [Common 17-14] Message 'Vivado 12-584' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings. [E:/comp struc/project/alu2/constraint/au.xdc:3]
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/constraint/au.xdc:3]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/constraint/au.xdc:4]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+CRITICAL WARNING: [Common 17-55] 'set_property' expects at least one object. [E:/comp struc/project/alu2/constraint/au.xdc:5]
+Resolution: If [get_<value>] was used to populate the object, check to make sure this command returns at least one valid object.
+Finished Parsing XDC File [E:/comp struc/project/alu2/constraint/au.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [E:/comp struc/project/alu2/constraint/au.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/alu_3_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/alu_3_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 999.004 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 999.352 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 999.004 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 999.004 ; gain = 0.000
+Finished Constraint Validation : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7a35tftg256-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 999.004 ; gain = 0.000
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:19 ; elapsed = 00:00:21 . Memory (MB): peak = 999.004 ; gain = 0.000
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-802] inferred FSM for state register 'M_fsm_t_q_reg' in module 'fsm_test_4'
-INFO: [Synth 8-802] inferred FSM for state register 'M_changemode_q_reg' in module 'fsm_combine_1'
-WARNING: [Synth 8-327] inferring latch for variable 's_reg' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_20.v:21]
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-                S0_fsm_t |            000000000000000000001 |                            00000
-                S1_fsm_t |            000000000000000000010 |                            00001
-                S2_fsm_t |            000000000000000000100 |                            00010
-                S3_fsm_t |            000000000000000001000 |                            00011
-                S4_fsm_t |            000000000000000010000 |                            00100
-                S5_fsm_t |            000000000000000100000 |                            00101
-                S6_fsm_t |            000000000000001000000 |                            00110
-                S7_fsm_t |            000000000000010000000 |                            00111
-                S8_fsm_t |            000000000000100000000 |                            01000
-                S9_fsm_t |            000000000001000000000 |                            01001
-               S10_fsm_t |            000000000010000000000 |                            01010
-               S11_fsm_t |            000000000100000000000 |                            01011
-               S12_fsm_t |            000000001000000000000 |                            01100
-               S13_fsm_t |            000000010000000000000 |                            01101
-               S14_fsm_t |            000000100000000000000 |                            01110
-               S15_fsm_t |            000001000000000000000 |                            01111
-               S16_fsm_t |            000010000000000000000 |                            10000
-               S17_fsm_t |            000100000000000000000 |                            10001
-               S18_fsm_t |            001000000000000000000 |                            10010
-               S19_fsm_t |            010000000000000000000 |                            10011
-               S20_fsm_t |            100000000000000000000 |                            10100
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'M_fsm_t_q_reg' using encoding 'one-hot' in module 'fsm_test_4'
----------------------------------------------------------------------------------------------------
-                   State |                     New Encoding |                Previous Encoding 
----------------------------------------------------------------------------------------------------
-           S0_changemode |                               00 |                               00
-           S1_changemode |                               01 |                               01
-           S2_changemode |                               10 |                               10
-           S3_changemode |                               11 |                               11
----------------------------------------------------------------------------------------------------
-INFO: [Synth 8-3354] encoded FSM with state register 'M_changemode_q_reg' using encoding 'sequential' in module 'fsm_combine_1'
+WARNING: [Synth 8-327] inferring latch for variable 's_reg' [E:/comp struc/project/alu2/work/vivado/alu2/alu2.srcs/sources_1/imports/verilog/comparator_12.v:21]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:21 ; elapsed = 00:00:23 . Memory (MB): peak = 999.004 ; gain = 0.000
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Adders : 
-	   2 Input   18 Bit       Adders := 1     
-	   3 Input   16 Bit       Adders := 2     
-	   2 Input    4 Bit       Adders := 3     
+	   3 Input   16 Bit       Adders := 1     
 +---XORs : 
-	   2 Input     32 Bit         XORs := 2     
-	   4 Input     32 Bit         XORs := 1     
-	   2 Input     16 Bit         XORs := 4     
-	   2 Input      1 Bit         XORs := 4     
-+---Registers : 
-	               32 Bit    Registers := 4     
-	               18 Bit    Registers := 1     
-	               16 Bit    Registers := 3     
-	                6 Bit    Registers := 1     
-	                4 Bit    Registers := 4     
-	                3 Bit    Registers := 1     
-	                2 Bit    Registers := 5     
-	                1 Bit    Registers := 5     
+	   2 Input     16 Bit         XORs := 2     
+	   2 Input      1 Bit         XORs := 2     
 +---Muxes : 
-	   2 Input   32 Bit        Muxes := 1     
-	   2 Input   18 Bit        Muxes := 1     
-	   2 Input   16 Bit        Muxes := 11    
-	   4 Input   16 Bit        Muxes := 12    
-	  10 Input   16 Bit        Muxes := 2     
-	   3 Input   16 Bit        Muxes := 2     
-	   2 Input   12 Bit        Muxes := 1     
-	   2 Input    8 Bit        Muxes := 1     
-	  21 Input    5 Bit        Muxes := 1     
-	   4 Input    4 Bit        Muxes := 2     
-	   3 Input    3 Bit        Muxes := 1     
-	   5 Input    2 Bit        Muxes := 2     
-	   3 Input    2 Bit        Muxes := 2     
-	   4 Input    2 Bit        Muxes := 1     
-	   2 Input    2 Bit        Muxes := 1     
-	   2 Input    1 Bit        Muxes := 5     
-	  21 Input    1 Bit        Muxes := 1     
+	   2 Input   16 Bit        Muxes := 4     
+	   4 Input   16 Bit        Muxes := 5     
+	  10 Input   16 Bit        Muxes := 1     
+	   3 Input   16 Bit        Muxes := 1     
+	   5 Input    2 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -274,14 +425,10 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-DSP Report: Generating DSP fsmc/fsmt/aluUnit/out0, operation Mode is: A*B.
-DSP Report: operator fsmc/fsmt/aluUnit/out0 is absorbed into DSP fsmc/fsmt/aluUnit/out0.
-DSP Report: Generating DSP fsmc/inmode/aluUnit/out0, operation Mode is: A2*B2.
-DSP Report: register fsmc/inmode/M_bstore_q_reg is absorbed into DSP fsmc/inmode/aluUnit/out0.
-DSP Report: register fsmc/inmode/M_astore_q_reg is absorbed into DSP fsmc/inmode/aluUnit/out0.
-DSP Report: operator fsmc/inmode/aluUnit/out0 is absorbed into DSP fsmc/inmode/aluUnit/out0.
+DSP Report: Generating DSP out0, operation Mode is: A*B.
+DSP Report: operator out0 is absorbed into DSP out0.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:36 ; elapsed = 00:00:39 . Memory (MB): peak = 999.004 ; gain = 0.000
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:17 ; elapsed = 00:00:19 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -291,8 +438,7 @@ DSP: Preliminary Mapping	Report (see note below)
 +------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 |Module Name | DSP Mapping | A Size | B Size | C Size | D Size | P Size | AREG | BREG | CREG | DREG | ADREG | MREG | PREG | 
 +------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
-|alu_10      | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
-|au_top_0    | A2*B2       | 16     | 16     | -      | -      | 32     | 1    | 1    | -    | -    | -     | 0    | 0    | 
+|alu_3       | A*B         | 16     | 16     | -      | -      | 32     | 0    | 0    | -    | -    | -     | 0    | 0    | 
 +------------+-------------+--------+--------+--------+--------+--------+------+------+------+------+-------+------+------+
 
 Note: The table above is a preliminary report that shows the DSPs inferred at the current stage of the synthesis flow. Some DSP may be reimplemented as non DSP primitives later in the synthesis flow. Multiple instantiated DSPs are reported only once.
@@ -303,19 +449,19 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:51 ; elapsed = 00:00:54 . Memory (MB): peak = 1010.801 ; gain = 11.797
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:01 ; elapsed = 00:01:04 . Memory (MB): peak = 1182.426 ; gain = 183.422
+Finished Timing Optimization : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 999.352 ; gain = 0.000
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:02 ; elapsed = 00:01:05 . Memory (MB): peak = 1192.492 ; gain = 193.488
+Finished Technology Mapping : Time (s): cpu = 00:00:28 ; elapsed = 00:00:30 . Memory (MB): peak = 1013.383 ; gain = 14.031
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -333,37 +479,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 1192.492 ; gain = 193.488
+Finished IO Insertion : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1024.648 ; gain = 25.297
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 1192.492 ; gain = 193.488
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1024.648 ; gain = 25.297
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 1192.492 ; gain = 193.488
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1024.648 ; gain = 25.297
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 1192.492 ; gain = 193.488
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1024.648 ; gain = 25.297
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 1192.492 ; gain = 193.488
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1024.648 ; gain = 25.297
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 1192.492 ; gain = 193.488
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1024.648 ; gain = 25.297
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -379,41 +525,38 @@ Report Cell Usage:
 +------+--------+------+
 |      |Cell    |Count |
 +------+--------+------+
-|1     |BUFG    |     2|
-|2     |CARRY4  |    47|
-|3     |DSP48E1 |     2|
-|5     |LUT1    |    21|
-|6     |LUT2    |    48|
-|7     |LUT3    |    49|
-|8     |LUT4    |    91|
-|9     |LUT5    |   100|
-|10    |LUT6    |   248|
-|11    |FDRE    |   323|
-|12    |FDSE    |    58|
-|13    |IBUF    |    24|
-|14    |OBUF    |    37|
-|15    |OBUFT   |     8|
+|1     |CARRY4  |     4|
+|2     |DSP48E1 |     1|
+|3     |LUT1    |     1|
+|4     |LUT2    |    13|
+|5     |LUT3    |    39|
+|6     |LUT4    |    27|
+|7     |LUT5    |    39|
+|8     |LUT6    |   127|
+|9     |IBUF    |    38|
+|10    |OBUF    |    19|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:01:06 ; elapsed = 00:01:10 . Memory (MB): peak = 1192.492 ; gain = 193.488
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1024.648 ; gain = 25.297
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:53 ; elapsed = 00:01:06 . Memory (MB): peak = 1192.492 ; gain = 193.488
-Synthesis Optimization Complete : Time (s): cpu = 00:01:07 ; elapsed = 00:01:10 . Memory (MB): peak = 1192.492 ; gain = 193.488
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:24 ; elapsed = 00:00:31 . Memory (MB): peak = 1024.648 ; gain = 25.297
+Synthesis Optimization Complete : Time (s): cpu = 00:00:32 ; elapsed = 00:00:34 . Memory (MB): peak = 1024.648 ; gain = 25.297
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1192.492 ; gain = 0.000
-INFO: [Netlist 29-17] Analyzing 49 Unisim elements for replacement
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.005 . Memory (MB): peak = 1032.090 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 5 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1192.492 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 1035.082 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-74 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+32 Infos, 101 Warnings, 102 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:17 ; elapsed = 00:01:25 . Memory (MB): peak = 1192.492 ; gain = 193.488
-INFO: [Common 17-1381] The checkpoint 'E:/comp struc/project/alu2/work/vivado/alu2/alu2.runs/synth_1/au_top_0.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file au_top_0_utilization_synth.rpt -pb au_top_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Tue Mar 15 17:21:33 2022...
+synth_design: Time (s): cpu = 00:00:38 ; elapsed = 00:00:42 . Memory (MB): peak = 1035.082 ; gain = 35.730
+INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
+INFO: [Common 17-1381] The checkpoint 'E:/comp struc/project/alu2/work/vivado/alu2/alu2.runs/synth_1/alu_3.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file alu_3_utilization_synth.rpt -pb alu_3_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Mar 30 22:56:02 2022...

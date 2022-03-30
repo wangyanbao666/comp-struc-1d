@@ -3,18 +3,21 @@ module au_top (
     input rst_n,            // reset button (active low)
     input usb_rx,           // USB->Serial input
     output usb_tx,          // USB->Serial output
+    output light,
+    output led[8],
     input button[9],
     input clear_button,
     input pass_button,
     input reset_button,
     output player[9],
     output pattern[9]
+
   ) {
   
   sig rst;                  // reset signal
   sig time[4][4];
   game_beta beta(.clk(clk),.rst(rst));
-  time_countdown timer(.clk(clk),.rst(rst));
+  //time_countdown timer(.clk(clk),.rst(rst));
   .clk(clk) {
     // The reset conditioner is used to synchronize the reset signal to the FPGA
     // clock. This ensures the entire FPGA comes out of reset at the same time.
@@ -25,17 +28,21 @@ module au_top (
     reset_cond.in = ~rst_n; // input raw inverted reset signal
     rst = reset_cond.out;   // conditioned reset
     
+    led = 8h00;
     usb_tx = usb_rx;        // loop serial port
-    timer.reset_button = reset_button;
-    time = timer.out;
+    light = 1;
+    //timer.reset_button = reset_button;
+    //time = timer.out;
     
     beta.play_button = button;
     beta.pass_button = pass_button;
     beta.clear_button = clear_button;
     beta.reset_button = reset_button;
-    beta.time = time;
+    beta.time = {4b0,4b1,4b1,4b1};
     
-    player = beta.current_state[8:0];
-    pattern = beta.pattern[8:0];
+    //player = beta.current_state[8:0];
+    //pattern = beta.pattern[8:0];
+    player = 9b0;
+    pattern = 9b0;
   }
 }
