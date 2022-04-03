@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="game_test1" board="Alchitry Au" language="Lucid" version="3">
+  <files>
+    <component>pipeline.luc</component>
+    <src>alu.luc</src>
+    <src>fsm_combine.luc</src>
+    <component>button_conditioner.luc</component>
+    <component>edge_detector.luc</component>
+    <src>random_rom.luc</src>
+    <component>counter.luc</component>
+    <src>game_controlUnit.luc</src>
+    <src>game_beta.luc</src>
+    <src>pattern_rom.luc</src>
+    <src>boolean.luc</src>
+    <src>multi_seven_seg.luc</src>
+    <component>decoder.luc</component>
+    <component>pn_gen.luc</component>
+    <src>comparator.luc</src>
+    <src>find_neighbor.luc</src>
+    <src>flip.luc</src>
+    <src>time_countdown.luc</src>
+    <component>reset_conditioner.luc</component>
+    <src>adder.luc</src>
+    <src>random_choose.luc</src>
+    <src>game_regfile.luc</src>
+    <src>increase_score.luc</src>
+    <src>rom.luc</src>
+    <src>seven_seg.luc</src>
+    <src>input_mode.luc</src>
+    <src top="true">au_top.luc</src>
+    <src>shifter.luc</src>
+    <src>fsm_test.luc</src>
+    <constraint>custom.acf</constraint>
+    <constraint>new_constraint.xdc</constraint>
+  </files>
+</project>

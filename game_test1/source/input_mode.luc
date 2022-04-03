@@ -1,0 +1,39 @@
+module input_mode (
+    input clk,  // clock
+    input rst,  // reset
+    input iodip[16],
+    input io_button[4],
+    output zvn[3],
+    output out[16]
+  ) {
+  alu aluUnit;
+  dff astore[16](#INIT(0),.clk(clk),.rst(rst));
+  dff bstore[16](#INIT(0),.clk(clk),.rst(rst));
+  dff alufnstore[6](#INIT(0),.clk(clk),.rst(rst));
+  dff outstore[16](#INIT(0),.clk(clk),.rst(rst));
+  dff zvnstore[3](#INIT(0),.clk(clk),.rst(rst));
+  always {
+    aluUnit.a = astore.q;
+    aluUnit.b = bstore.q;
+    aluUnit.alufn = alufnstore.q;
+    if (io_button[0]){
+        astore.d = iodip;
+        outstore.d = iodip;
+     }
+      
+    if (io_button[1]){
+        bstore.d = iodip;
+        outstore.d  = iodip;
+    }
+    if (io_button[2]){
+        alufnstore.d = iodip[5:0];
+        outstore.d  = iodip;
+      }
+    if (io_button[3]){
+        outstore.d = aluUnit.out;
+        zvnstore.d = $build(aluUnit.z,aluUnit.v,aluUnit.n);
+      }
+    zvn = zvnstore.q;
+    out = outstore.q;
+  }
+}

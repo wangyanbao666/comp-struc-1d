@@ -1,0 +1,126 @@
+module game_beta (
+    input clk,  // clock
+    input rst,  // reset
+    input play_button[9],
+    input clear_button,
+    input pass_button,
+    input reset_button,
+    input t[4][4],
+    output current_state[16],
+    output pattern[16],
+    output score[2][4],
+    
+    //for debug
+    output debug_light
+
+  ) {
+  sig inputAlu_a[16];
+  sig inputAlu_b[16];
+  sig increase;
+  sig wr_data[16];
+  dff z(#INIT(0),.clk(clk),.rst(rst));
+  dff address[3](#INIT(0),.clk(clk),.rst(rst));
+  alu game_alu;
+  game_controlUnit game_controlunit(.clk(clk),.rst(rst));
+  game_regfile regfile(.clk(clk),.rst(rst));
+  pn_gen rand_num(.clk(clk),.rst(rst),.seed(32h100));
+  pattern_rom patterns;
+  increase_score increasor(.clk(clk),.rst(rst));
+  
+  button_conditioner playerbuttoncond[9](.clk(clk));
+  edge_detector playerbuttondetector[9](#RISE(1), #FALL(0),.clk(clk)); 
+  button_conditioner clearbuttoncond(.clk(clk));
+  edge_detector clearbuttondetector(#RISE(1), #FALL(0),.clk(clk)); 
+  button_conditioner passbuttoncond(.clk(clk));
+  edge_detector passbuttondetector(#RISE(1), #FALL(0),.clk(clk)); 
+  button_conditioner resetbuttoncond(.clk(clk));
+  edge_detector resetbuttondetector(#RISE(1), #FALL(0),.clk(clk)); 
+  
+  always {
+
+    rand_num.next = 0;
+    if (reset_button){
+      rand_num.next = 1;
+      address.d = rand_num.num[2:0];
+      }
+    else {
+      address.d = address.q;
+      }
+
+    
+    playerbuttoncond.in = play_button;
+    playerbuttondetector.in = playerbuttoncond.out;
+    clearbuttoncond.in = clear_button;
+    clearbuttondetector.in = clearbuttoncond.out;
+    passbuttoncond.in = pass_button;
+    passbuttondetector.in = passbuttoncond.out;
+    resetbuttoncond.in = reset_button;
+    resetbuttondetector.in = resetbuttoncond.out;
+    
+    //input for cu
+    game_controlunit.button = playerbuttondetector.out;
+    game_controlunit.clear_button = clearbuttondetector.out;
+    game_controlunit.reset_button = resetbuttondetector.out;
+    game_controlunit.pass_button = passbuttondetector.out;
+    game_controlunit.z = z.q;
+    game_controlunit.t = t;
+    
+    //input for regfile
+    //regfile.wr_data = 16b0;
+    regfile.wrsel = game_controlunit.wr;
+    //regfile.wrsel = 16b0;
+    regfile.we = game_controlunit.we;
+    //regfile.we = 0;
+    
+    //input for rom
+    patterns.addressr = 3b0;
+    patterns.addressl = regfile.level;
+    
+    //input for increasor 
+    increase = game_controlunit.increase;
+    increasor.increase = increase;
+    increasor.increase = 0;
+    
+    
+    case (game_controlunit.asel){
+      b000: inputAlu_a = regfile.pattern;
+      b001: inputAlu_a = game_controlunit.button_sig;
+      b011: inputAlu_a = 16b101;
+      b100: inputAlu_a = 16b1;
+      default: inputAlu_a = 16b0;
+      }
+    
+    case (game_controlunit.bsel){
+      b000: inputAlu_b = regfile.current_state;
+      b001: inputAlu_b = regfile.level;
+      b010: inputAlu_b = regfile.score;
+      default: inputAlu_b = 16b1;
+      }
+    
+    //inputAlu_a = 16b0;
+    //inputAlu_b = 16b0;
+    game_alu.a = inputAlu_a;
+    game_alu.b = inputAlu_b;
+    game_alu.alufn = game_controlunit.alufn;
+    //game_alu.alufn = 6b0;
+    //game_alu.a = 16b0;
+    //game_alu.b = 16b0;
+    //game_alu.alufn = 6b110011;
+    z.d = game_alu.z;
+    
+   case (game_controlunit.wdsel){
+      b00: wr_data = game_alu.out;
+      b01: wr_data = 16b0;
+      b10: wr_data = patterns.out;
+      default: wr_data = 16b0;
+      }
+    
+    regfile.wr_data = wr_data;
+    
+    score = increasor.out;
+    current_state = regfile.current_state;
+    pattern = regfile.pattern;
+    debug_light = regfile.debug_light;
+
+  }
+}

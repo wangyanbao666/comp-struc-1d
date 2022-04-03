@@ -1,0 +1,17 @@
+module random_choose (
+    input clk,  // clock
+    input rst,  // reset
+    input button,
+    output out[4]
+  ) {
+  pn_gen random_generate(.clk(clk),.rst(rst),.seed(32h100));
+  random_rom choose;
+  sig int[3];
+  
+  always {
+    random_generate.next = button;
+    int = random_generate.num[2:0];
+    choose.address = int;
+    out = choose.out;
+  }
+}

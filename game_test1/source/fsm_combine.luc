@@ -1,0 +1,86 @@
+module fsm_combine (
+    input clk,  // clock
+    input rst,  // reset
+    input iobutton[5],
+    input iodip[16],
+    output seg[8],
+    output sel[4],
+    output out[16]
+  ) {
+  input_mode inmode(.clk(clk),.rst(rst));
+  fsm_test fsmt(.clk(clk),.rst(rst));
+  fsm changemode(.clk(clk),.rst(rst))={S0,S1,S2,S3};
+  button_conditioner buttoncond[5](.clk(clk));
+  edge_detector buttondetector[5](#RISE(1), #FALL(0),.clk(clk)); 
+  multi_seven_seg mss(.clk(clk),.rst(rst));
+ 
+  time_countdown count(.clk(clk),.rst(rst));
+  random_choose randchoose(.clk(clk),.rst(rst));
+  sig button[5];
+  sig z[4];
+  sig v[4];
+  sig n[4];
+  sig s[4];
+  always {
+    
+    buttoncond.in = iobutton[4:0];
+    buttondetector.in = buttoncond.out;
+    button = buttondetector.out;
+    inmode.io_button = button[3:0];
+    out = 16b0;
+    s = 4b0;
+    inmode.iodip=iodip;
+    fsmt.iodip=iodip[0];
+    count.reset_button = iodip[0];
+    randchoose.button = button[0];
+
+    case(changemode.q){
+      changemode.S0:
+      out = inmode.out;
+      z = inmode.zvn[2];
+      v = inmode.zvn[1];
+      n = inmode.zvn[0];
+      mss.values={z,v,n,s};
+      seg = ~mss.seg;
+      sel = ~mss.sel;
+      if (button[4]){
+          changemode.d=changemode.S1;
+      }
+        
+      changemode.S1:
+      out = fsmt.out_calc;
+      //mss.values = fsmt.zvn_out;
+      s = fsmt.seg;
+      z = fsmt.zvn_out[2];
+      v = fsmt.zvn_out[1];
+      n = fsmt.zvn_out[0];
+      mss.values={z,v,n,s};
+      seg = ~mss.seg;
+      sel = ~mss.sel;
+      if (button[4]){
+          changemode.d=changemode.S2;
+      }
+        
+      changemode.S2:
+      mss.values = count.out;
+      seg = ~mss.seg;
+      sel = ~mss.sel;
+      sel[3]=1;
+      if (button[4]){
+          changemode.d=changemode.S3;
+      }
+        
+      changemode.S3:
+      out[3:0] = randchoose.out;
+      mss.values = {randchoose.out,randchoose.out,randchoose.out,randchoose.out};
+      seg = ~mss.seg;
+      sel = ~mss.sel;
+      sel[3:1] = 3b111;
+      if (button[4]){
+          changemode.d=changemode.S0;
+      }
+      default:mss.values={4b0,4b0,4b0,4b0};seg = 8b0; sel = 1111;
+    }
+    
+
+}
