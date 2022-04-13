@@ -1,0 +1,17 @@
+module comparator (
+    input n,  // clock
+    input z,
+    input v,  
+    input alufn[6],
+    output s[16]
+  ) {
+
+  always {
+    case(alufn){
+      b110011: s[0]=z;
+      b110101: s[0]=n^v;
+      b110111: s[0]=z|(n^v);
+      default: s=16b0;
+      }
+  }
+}

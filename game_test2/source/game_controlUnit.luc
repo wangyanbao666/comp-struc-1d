@@ -1,0 +1,385 @@
+module game_controlUnit (
+    input clk,  // clock
+    input rst,  // reset
+    input button[9],
+    input clear_button,
+    input pass_button,
+    input reset_button,
+    input z,
+    input t[4][4],
+    input toggle,
+    
+    output we,
+    output wdsel[3],
+    output asel[3],
+    output bsel[3],
+    output alufn[6],
+    output wr[16],
+    output button_sig[16],
+    output increase,
+    output time_show
+    //output time_froze
+  ) {
+  
+
+  fsm game_fsm(.clk(clk),.rst(rst))={
+    PREPARE0,
+    PREPARE,
+    START,
+    SET_PATTERN,
+    RESET_SCORE,
+    RESET_LEVEL,
+    SET_DECREMENT_TIMER,
+    IDLE,
+    CLEAR_BOARD,
+    GENERATE_PATTERN,
+    ADD_LEVEL,
+    CHECK_LEVEL,
+    CHECK_LEVEL_TRANS,
+    CHECK_PATTERN,
+    ADD_SCORE,
+    UPDATE_STATE1,
+    UPDATE_STATE2,
+    UPDATE_STATE3,
+    UPDATE_STATE4,
+    UPDATE_STATE5,
+    UPDATE_STATE6,
+    UPDATE_STATE7,
+    UPDATE_STATE8,
+    UPDATE_STATE9,
+    UPDATE_TRANS,
+    CHECK_TIME,
+    DECRESE_GAME_TIMER,
+    LOSE_PATTERN1,
+    LOSE_PATTERN2,
+    LOSE_PATTERN3,
+    LOSE_PATTERN4,
+    LOSE_PATTERN5,
+    LOSE_PATTERN6,
+    CHECKWINLOSE,
+    GAMEOVER
+    };
+
+  always {
+    we = 0;
+    wdsel = b000;
+    asel = b000;
+    bsel = b000;
+    alufn = 6b0;
+    wr = 16b0;
+    button_sig = 16b0;
+    increase = 0;
+    time_show = 1;
+
+      case (game_fsm.q){
+        game_fsm.PREPARE0:
+          time_show = 0;
+          if (reset_button){
+          game_fsm.d = game_fsm.PREPARE;
+          }
+      
+        game_fsm.PREPARE:
+          game_fsm.d = game_fsm.PREPARE;
+          time_show = 0;
+          if (reset_button) {
+            game_fsm.d = game_fsm.START;
+            }
+        
+        game_fsm.START:
+          we = 1;
+          wdsel = b001;
+          wr = 16h1;
+          game_fsm.d = game_fsm.RESET_SCORE;
+          
+        game_fsm.RESET_SCORE:
+          we = 1;
+          wdsel = b001;
+          wr = 16h2;
+          game_fsm.d = game_fsm.RESET_LEVEL;
+          
+        game_fsm.RESET_LEVEL:
+          we = 1;
+          wdsel = b001;
+          wr = 16h3;
+          game_fsm.d = game_fsm.SET_PATTERN;
+          
+        game_fsm.SET_PATTERN:
+          we = 1;
+          wdsel = b010;
+          wr = 16h0;
+          game_fsm.d = game_fsm.IDLE;
+          
+        game_fsm.IDLE:   
+          if (clear_button){
+            game_fsm.d = game_fsm.CLEAR_BOARD;
+            }
+          else if (button[0]){
+            game_fsm.d = game_fsm.UPDATE_STATE1;
+            }
+          else if (button[1]){
+            game_fsm.d = game_fsm.UPDATE_STATE2;
+            }
+          else if (button[2]){
+            game_fsm.d = game_fsm.UPDATE_STATE3;
+            }
+          else if (button[3]){
+            game_fsm.d = game_fsm.UPDATE_STATE4;
+            }
+          else if (button[4]){
+            game_fsm.d = game_fsm.UPDATE_STATE5;
+            }
+          else if (button[5]){
+            game_fsm.d = game_fsm.UPDATE_STATE6;
+            }
+          else if (button[6]){
+            game_fsm.d = game_fsm.UPDATE_STATE7;
+            }
+          else if (button[7]){
+            game_fsm.d = game_fsm.UPDATE_STATE8;
+            }
+          else if (button[8]){
+            game_fsm.d = game_fsm.UPDATE_STATE9;
+            }
+          else if (pass_button){
+            game_fsm.d = game_fsm.CHECK_LEVEL;
+            }
+          else if (reset_button) {
+            game_fsm.d = game_fsm.START;
+            }
+          else {
+            game_fsm.d = game_fsm.IDLE;
+            }
+          if (t[0]==b0000 && t[1]==b0000 && t[2]==b0000 && t[3]==b0000){
+            game_fsm.d = game_fsm.LOSE_PATTERN1;
+          }
+          
+        game_fsm.CLEAR_BOARD:
+          we = b1;
+          wdsel = b001;
+          wr = 16h1;
+          game_fsm.d = game_fsm.IDLE;
+          
+        game_fsm.UPDATE_STATE1:
+          we = b1;
+          wdsel = b000;
+          asel = 3b001;
+          bsel = 3b000;
+          alufn = 6b111111;
+          wr = 16h1;
+          button_sig = 16b1;
+          game_fsm.d = game_fsm.UPDATE_TRANS;
+   
+        game_fsm.UPDATE_STATE2:
+          we = b1;
+          wdsel = b000;
+          asel = 3b001;
+          bsel = 3b000;
+          alufn = 6b111111;
+          wr = 16h1;
+          button_sig = 16b10;
+          game_fsm.d = game_fsm.UPDATE_TRANS;
+        
+        game_fsm.UPDATE_STATE3:
+          we = b1;
+          wdsel = b000;
+          asel = 3b001;
+          bsel = 3b000;
+          alufn = 6b111111;
+          wr = 16h1;
+          button_sig = 16b100;
+          game_fsm.d = game_fsm.UPDATE_TRANS;
+          
+        game_fsm.UPDATE_STATE4:
+          we = b1;
+          wdsel = b000;
+          asel = 3b001;
+          bsel = 3b000;
+          alufn = 6b111111;
+          wr = 16h1;
+          button_sig = 16b1000;
+          game_fsm.d = game_fsm.UPDATE_TRANS;
+          
+        game_fsm.UPDATE_STATE5:
+          we = b1;
+          wdsel = b000;
+          asel = 3b001;
+          bsel = 3b000;
+          alufn = 6b111111;
+          wr = 16h1;
+          button_sig = 16b10000;
+          game_fsm.d = game_fsm.UPDATE_TRANS;
+          
+        game_fsm.UPDATE_STATE6:
+          we = b1;
+          wdsel = b000;
+          asel = 3b001;
+          bsel = 3b000;
+          alufn = 6b111111;
+          wr = 16h1;
+          button_sig = 16b100000;
+          game_fsm.d = game_fsm.UPDATE_TRANS;
+          
+        game_fsm.UPDATE_STATE7:
+          we = b1;
+          wdsel = b000;
+          asel = 3b001;
+          bsel = 3b000;
+          alufn = 6b111111;
+          wr = 16h1;
+          button_sig = 16b1000000;
+          game_fsm.d = game_fsm.UPDATE_TRANS;
+          
+        game_fsm.UPDATE_STATE8:
+          we = b1;
+          wdsel = b000;
+          asel = 3b001;
+          bsel = 3b000;
+          alufn = 6b111111;
+          wr = 16h1;
+          button_sig = 16b10000000;
+          game_fsm.d = game_fsm.UPDATE_TRANS;
+          
+        game_fsm.UPDATE_STATE9:
+          we = b1;
+          wdsel = b000;
+          asel = 3b001;
+          bsel = 3b000;
+          alufn = 6b111111;
+          wr = 16h1;
+          button_sig = 16b100000000;
+          game_fsm.d = game_fsm.UPDATE_TRANS;
+          
+        game_fsm.UPDATE_TRANS:
+          wdsel = b000;
+          asel = 3b000;
+          bsel = 3b000;
+          alufn = 6b110011;
+          game_fsm.d = game_fsm.CHECK_PATTERN;
+                
+        game_fsm.CHECK_PATTERN:
+          if (z==1){
+            game_fsm.d = game_fsm.ADD_SCORE;
+            }
+          else {
+            game_fsm.d = game_fsm.IDLE;
+            }
+                
+        game_fsm.ADD_SCORE:
+          we = b1;
+          wdsel = b000;
+          asel = 3b100;
+          bsel = 3b010;
+          alufn = 6b0;
+          wr = 16h2;
+          increase = 1;
+          game_fsm.d = game_fsm.CHECK_LEVEL;
+          
+        game_fsm.CHECK_LEVEL:
+          asel = 3b011;
+          bsel = 3b001;
+          alufn = 6b110011;
+          game_fsm.d = game_fsm.CHECK_LEVEL_TRANS;
+          
+        game_fsm.CHECK_LEVEL_TRANS:
+          if (z==1){
+            game_fsm.d = game_fsm.LOSE_PATTERN1;
+            }
+          else {
+            game_fsm.d = game_fsm.ADD_LEVEL;
+            }
+
+        
+        game_fsm.ADD_LEVEL:
+          we = b1;
+          asel = 3b100;
+          bsel = 3b001;
+          wdsel = b000;
+          alufn = 6b0;
+          wr = 16h3;
+          game_fsm.d = game_fsm.GENERATE_PATTERN;
+          
+        game_fsm.GENERATE_PATTERN:
+          we = b1;
+          wdsel = b010;
+          wr = 16h0;
+          game_fsm.d = game_fsm.IDLE;
+          
+        game_fsm.LOSE_PATTERN1:
+          we = b1;
+          wdsel = b100;
+          wr = 16h1;
+          if (toggle){
+            game_fsm.d = game_fsm.LOSE_PATTERN2;
+            }
+          else {
+            game_fsm.d = game_fsm.LOSE_PATTERN1;
+          }
+        
+        game_fsm.LOSE_PATTERN2:
+          we = b1;
+          wdsel = b011;
+          wr = 16h1;
+          if (toggle){
+            game_fsm.d = game_fsm.LOSE_PATTERN3;
+            }
+          else {
+            game_fsm.d = game_fsm.LOSE_PATTERN2;
+          }
+       
+        
+         game_fsm.LOSE_PATTERN3:
+          we = b1;
+          wdsel = b100;
+          wr = 16h1;
+          if (toggle){
+            game_fsm.d = game_fsm.LOSE_PATTERN4;
+            }
+          else {
+            game_fsm.d = game_fsm.LOSE_PATTERN3;
+          }
+        
+        game_fsm.LOSE_PATTERN4:
+          we = b1;
+          wdsel = b011;
+          wr = 16h1;
+          if (toggle){
+            game_fsm.d = game_fsm.LOSE_PATTERN5;
+            }
+          else {
+            game_fsm.d = game_fsm.LOSE_PATTERN4;
+          }
+          
+        
+        game_fsm.LOSE_PATTERN5:
+          we = b1;
+          wdsel = b100;
+          wr = 16h1;
+          if (toggle){
+            game_fsm.d = game_fsm.LOSE_PATTERN6;
+            }
+          else {
+            game_fsm.d = game_fsm.LOSE_PATTERN5;
+          }
+        
+        game_fsm.LOSE_PATTERN6:
+          we = b1;
+          wdsel = b011;
+          wr = 16h1;
+          if (toggle){
+            game_fsm.d = game_fsm.LOSE_PATTERN6;
+            }
+          else {
+            game_fsm.d = game_fsm.GAMEOVER;
+          }
+          
+        game_fsm.GAMEOVER:
+          we = b1;
+          wdsel = b101;
+          wr = 16h1;
+          game_fsm.d = game_fsm.GAMEOVER;
+          if (reset_button) {
+            game_fsm.d = game_fsm.START;
+            }
+        }
+    }
+  }

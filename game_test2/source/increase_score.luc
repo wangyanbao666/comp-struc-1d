@@ -1,0 +1,23 @@
+module increase_score (
+    input clk,  // clock
+    input rst,  // reset
+    input reset,
+    input increase,
+    output out[4]
+  ) {
+  dff digit1[4](#INIT(d0),.rst(rst),.clk(clk));
+  always {
+    if (reset){
+      digit1.d=4b0;
+      }
+    if (increase){
+      if (digit1.q==4d9){
+        digit1.d = 4d0;
+        }
+      else {
+        digit1.d = digit1.q+1;
+        }
+      }
+    out = digit1.q;
+  }
+}
