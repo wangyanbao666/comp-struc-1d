@@ -10,7 +10,7 @@
      MIN_DELAY = 20
      NUM_SYNC = 2
 */
-module button_conditioner_9 (
+module button_conditioner_10 (
     input clk,
     input in,
     output reg out

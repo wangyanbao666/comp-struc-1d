@@ -16,13 +16,14 @@ module game_beta_1 (
     output reg [15:0] pattern,
     output reg [3:0] score,
     output reg time_show,
-    input [31:0] randnum_val
+    input [31:0] randnum_val,
+    output reg timer_froze
   );
   
   
   
   wire [1-1:0] M_counter1_value;
-  counter_10 counter1 (
+  counter_11 counter1 (
     .clk(clk),
     .rst(rst),
     .value(M_counter1_value)
@@ -30,7 +31,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_edge_detector1_out;
   reg [1-1:0] M_edge_detector1_in;
-  edge_detector_8 edge_detector1 (
+  edge_detector_4 edge_detector1 (
     .clk(clk),
     .in(M_edge_detector1_in),
     .out(M_edge_detector1_out)
@@ -44,8 +45,6 @@ module game_beta_1 (
   
   reg [15:0] wr_data;
   
-  reg [2:0] int;
-  
   reg M_z_d, M_z_q = 1'h0;
   
   wire [16-1:0] M_game_alu_out;
@@ -55,7 +54,7 @@ module game_beta_1 (
   reg [16-1:0] M_game_alu_a;
   reg [16-1:0] M_game_alu_b;
   reg [6-1:0] M_game_alu_alufn;
-  alu_11 game_alu (
+  alu_12 game_alu (
     .a(M_game_alu_a),
     .b(M_game_alu_b),
     .alufn(M_game_alu_alufn),
@@ -66,7 +65,7 @@ module game_beta_1 (
   );
   
   wire [1-1:0] M_game_controlunit_we;
-  wire [3-1:0] M_game_controlunit_wdsel;
+  wire [4-1:0] M_game_controlunit_wdsel;
   wire [3-1:0] M_game_controlunit_asel;
   wire [3-1:0] M_game_controlunit_bsel;
   wire [6-1:0] M_game_controlunit_alufn;
@@ -74,6 +73,7 @@ module game_beta_1 (
   wire [16-1:0] M_game_controlunit_button_sig;
   wire [1-1:0] M_game_controlunit_increase;
   wire [1-1:0] M_game_controlunit_time_show;
+  wire [1-1:0] M_game_controlunit_time_froze;
   reg [9-1:0] M_game_controlunit_button;
   reg [1-1:0] M_game_controlunit_clear_button;
   reg [1-1:0] M_game_controlunit_pass_button;
@@ -81,7 +81,7 @@ module game_beta_1 (
   reg [1-1:0] M_game_controlunit_z;
   reg [16-1:0] M_game_controlunit_t;
   reg [1-1:0] M_game_controlunit_toggle;
-  game_controlUnit_12 game_controlunit (
+  game_controlUnit_13 game_controlunit (
     .clk(clk),
     .rst(rst),
     .button(M_game_controlunit_button),
@@ -99,7 +99,8 @@ module game_beta_1 (
     .wr(M_game_controlunit_wr),
     .button_sig(M_game_controlunit_button_sig),
     .increase(M_game_controlunit_increase),
-    .time_show(M_game_controlunit_time_show)
+    .time_show(M_game_controlunit_time_show),
+    .time_froze(M_game_controlunit_time_froze)
   );
   
   wire [16-1:0] M_regfile_current_state;
@@ -109,7 +110,7 @@ module game_beta_1 (
   reg [16-1:0] M_regfile_wr_data;
   reg [16-1:0] M_regfile_wrsel;
   reg [1-1:0] M_regfile_we;
-  game_regfile_13 regfile (
+  game_regfile_14 regfile (
     .clk(clk),
     .rst(rst),
     .wr_data(M_regfile_wr_data),
@@ -124,7 +125,7 @@ module game_beta_1 (
   wire [16-1:0] M_patterns_out;
   reg [3-1:0] M_patterns_addressr;
   reg [16-1:0] M_patterns_addressl;
-  pattern_rom_6 patterns (
+  pattern_rom_15 patterns (
     .addressr(M_patterns_addressr),
     .addressl(M_patterns_addressl),
     .out(M_patterns_out)
@@ -133,7 +134,7 @@ module game_beta_1 (
   wire [4-1:0] M_increasor_out;
   reg [1-1:0] M_increasor_reset;
   reg [1-1:0] M_increasor_increase;
-  increase_score_14 increasor (
+  increase_score_16 increasor (
     .clk(clk),
     .rst(rst),
     .reset(M_increasor_reset),
@@ -147,7 +148,7 @@ module game_beta_1 (
   genvar GEN_playerbuttoncond0;
   generate
   for (GEN_playerbuttoncond0=0;GEN_playerbuttoncond0<4'h9;GEN_playerbuttoncond0=GEN_playerbuttoncond0+1) begin: playerbuttoncond_gen_0
-    button_conditioner_9 playerbuttoncond (
+    button_conditioner_10 playerbuttoncond (
       .clk(clk),
       .in(M_playerbuttoncond_in[GEN_playerbuttoncond0*(1)+(1)-1-:(1)]),
       .out(M_playerbuttoncond_out[GEN_playerbuttoncond0*(1)+(1)-1-:(1)])
@@ -161,7 +162,7 @@ module game_beta_1 (
   genvar GEN_playerbuttondetector0;
   generate
   for (GEN_playerbuttondetector0=0;GEN_playerbuttondetector0<4'h9;GEN_playerbuttondetector0=GEN_playerbuttondetector0+1) begin: playerbuttondetector_gen_0
-    edge_detector_15 playerbuttondetector (
+    edge_detector_9 playerbuttondetector (
       .clk(clk),
       .in(M_playerbuttondetector_in[GEN_playerbuttondetector0*(1)+(1)-1-:(1)]),
       .out(M_playerbuttondetector_out[GEN_playerbuttondetector0*(1)+(1)-1-:(1)])
@@ -171,7 +172,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_clearbuttoncond_out;
   reg [1-1:0] M_clearbuttoncond_in;
-  button_conditioner_9 clearbuttoncond (
+  button_conditioner_10 clearbuttoncond (
     .clk(clk),
     .in(M_clearbuttoncond_in),
     .out(M_clearbuttoncond_out)
@@ -179,7 +180,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_clearbuttondetector_out;
   reg [1-1:0] M_clearbuttondetector_in;
-  edge_detector_8 clearbuttondetector (
+  edge_detector_4 clearbuttondetector (
     .clk(clk),
     .in(M_clearbuttondetector_in),
     .out(M_clearbuttondetector_out)
@@ -187,7 +188,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_passbuttoncond_out;
   reg [1-1:0] M_passbuttoncond_in;
-  button_conditioner_9 passbuttoncond (
+  button_conditioner_10 passbuttoncond (
     .clk(clk),
     .in(M_passbuttoncond_in),
     .out(M_passbuttoncond_out)
@@ -195,7 +196,7 @@ module game_beta_1 (
   
   wire [1-1:0] M_passbuttondetector_out;
   reg [1-1:0] M_passbuttondetector_in;
-  edge_detector_8 passbuttondetector (
+  edge_detector_4 passbuttondetector (
     .clk(clk),
     .in(M_passbuttondetector_in),
     .out(M_passbuttondetector_out)
@@ -234,7 +235,7 @@ module game_beta_1 (
         inputAlu_a = M_game_controlunit_button_sig;
       end
       3'h3: begin
-        inputAlu_a = 16'h0008;
+        inputAlu_a = 16'h0007;
       end
       3'h4: begin
         inputAlu_a = 16'h0001;
@@ -253,6 +254,9 @@ module game_beta_1 (
       end
       3'h2: begin
         inputAlu_b = M_regfile_score;
+      end
+      3'h3: begin
+        inputAlu_b = M_regfile_score - 1'h1;
       end
       default: begin
         inputAlu_b = 16'h0001;
@@ -282,6 +286,33 @@ module game_beta_1 (
       3'h5: begin
         wr_data = 16'h01ff;
       end
+      3'h6: begin
+        wr_data = 16'h0100;
+      end
+      3'h7: begin
+        wr_data = 16'h0080;
+      end
+      4'h8: begin
+        wr_data = 16'h0040;
+      end
+      4'h9: begin
+        wr_data = 16'h0020;
+      end
+      4'ha: begin
+        wr_data = 16'h0010;
+      end
+      4'hb: begin
+        wr_data = 16'h0008;
+      end
+      4'hc: begin
+        wr_data = 16'h0004;
+      end
+      4'hd: begin
+        wr_data = 16'h0002;
+      end
+      4'he: begin
+        wr_data = 16'h0001;
+      end
       default: begin
         wr_data = 16'h0000;
       end
@@ -291,6 +322,7 @@ module game_beta_1 (
     current_state = M_regfile_current_state;
     pattern = M_regfile_pattern;
     time_show = M_game_controlunit_time_show;
+    timer_froze = M_game_controlunit_time_froze;
   end
   
   always @(posedge clk) begin

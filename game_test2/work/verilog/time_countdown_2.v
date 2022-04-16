@@ -8,13 +8,15 @@ module time_countdown_2 (
     input clk,
     input rst,
     input reset_button,
+    input time_froze,
+    input signal,
     output reg [15:0] out
   );
   
   
   
   wire [1-1:0] M_slowclock_value;
-  counter_16 slowclock (
+  counter_3 slowclock (
     .clk(clk),
     .rst(rst),
     .value(M_slowclock_value)
@@ -40,21 +42,23 @@ module time_countdown_2 (
     digit[4+3-:4] = M_time2_q;
     digit[8+3-:4] = M_time3_q;
     digit[12+3-:4] = 4'h0;
-    if (digit[0+3-:4] == 1'h0) begin
-      if (digit[4+3-:4] == 1'h0) begin
-        if (digit[8+3-:4] != 1'h0) begin
-          digit[8+3-:4] = digit[8+3-:4] - 1'h1;
-          digit[4+3-:4] = 4'h9;
+    if (time_froze == 1'h0 && signal) begin
+      if (digit[0+3-:4] == 1'h0) begin
+        if (digit[4+3-:4] == 1'h0) begin
+          if (digit[8+3-:4] != 1'h0) begin
+            digit[8+3-:4] = digit[8+3-:4] - 1'h1;
+            digit[4+3-:4] = 4'h9;
+            digit[0+3-:4] = 4'h9;
+          end
+        end else begin
+          digit[4+3-:4] = digit[4+3-:4] - 1'h1;
           digit[0+3-:4] = 4'h9;
         end
       end else begin
-        digit[4+3-:4] = digit[4+3-:4] - 1'h1;
-        digit[0+3-:4] = 4'h9;
+        digit[0+3-:4] = digit[0+3-:4] - 1'h1;
       end
-    end else begin
-      digit[0+3-:4] = digit[0+3-:4] - 1'h1;
     end
-    if (reset_button == 1'h0) begin
+    if (reset_button) begin
       digit[0+3-:4] = 4'h0;
       digit[4+3-:4] = 4'h2;
       digit[8+3-:4] = 4'h1;
@@ -66,7 +70,7 @@ module time_countdown_2 (
     out = digit;
   end
   
-  always @(posedge M_slowclock_value) begin
+  always @(posedge clk) begin
     if (rst == 1'b1) begin
       M_time3_q <= 1'h1;
     end else begin
@@ -75,7 +79,16 @@ module time_countdown_2 (
   end
   
   
-  always @(posedge M_slowclock_value) begin
+  always @(posedge clk) begin
+    if (rst == 1'b1) begin
+      M_time2_q <= 2'h2;
+    end else begin
+      M_time2_q <= M_time2_d;
+    end
+  end
+  
+  
+  always @(posedge clk) begin
     if (rst == 1'b1) begin
       M_time1_q <= 1'h0;
     end else begin
@@ -89,15 +102,6 @@ module time_countdown_2 (
       M_reset_q <= 1'h0;
     end else begin
       M_reset_q <= M_reset_d;
-    end
-  end
-  
-  
-  always @(posedge M_slowclock_value) begin
-    if (rst == 1'b1) begin
-      M_time2_q <= 2'h2;
-    end else begin
-      M_time2_q <= M_time2_d;
     end
   end
   

@@ -2,12 +2,14 @@ module time_countdown (
     input clk,  // clock
     input rst,  // reset
     input reset_button,
+    input time_froze,
+    input signal,
     output out[4][4]
   ) {
   counter slowclock(#SIZE(1),#DIV(26),.clk(clk),.rst(rst));
-  dff time1[4](#INIT(d0),.rst(rst),.clk(slowclock.value));
-  dff time2[4](#INIT(d2),.rst(rst),.clk(slowclock.value));
-  dff time3[4](#INIT(d1),.rst(rst),.clk(slowclock.value));
+  dff time1[4](#INIT(d0),.rst(rst),.clk(clk));
+  dff time2[4](#INIT(d2),.rst(rst),.clk(clk));
+  dff time3[4](#INIT(d1),.rst(rst),.clk(clk));
   sig digit[4][4];
   dff reset(#INIT(d0),.rst(rst),.clk(clk));
 
@@ -16,24 +18,26 @@ module time_countdown (
     digit[1] = time2.q;
     digit[2] = time3.q;
     digit[3] = 4b0;
-    if (digit[0]==0){
-      if (digit[1]==0){
-        if (digit[2]!=0){
-          digit[2] = digit[2]-1;
-          digit[1] = 4d9;
+    if (time_froze==0 && signal){
+      if (digit[0]==0){
+        if (digit[1]==0){
+          if (digit[2]!=0){
+            digit[2] = digit[2]-1;
+            digit[1] = 4d9;
+            digit[0] = 4d9;
+            }
+          }
+        else{
+          digit[1] = digit[1]-1;
           digit[0] = 4d9;
           }
         }
-      else{
-        digit[1] = digit[1]-1;
-        digit[0] = 4d9;
+      else {
+        digit[0] = digit[0]-1;
         }
-      }
-    else {
-      digit[0] = digit[0]-1;
-      }
+    }
 
-    if (reset_button==0){
+    if (reset_button){
       digit[0] = 4d0;
       digit[1] = 4d2;
       digit[2] = 4d1;

@@ -9,7 +9,7 @@
      DIGITS = 4
      DIV = 16
 */
-module multi_seven_seg_4 (
+module multi_seven_seg_6 (
     input clk,
     input rst,
     input [15:0] values,
@@ -32,7 +32,7 @@ module multi_seven_seg_4 (
   
   wire [7-1:0] M_seg_dec_segs;
   reg [4-1:0] M_seg_dec_char;
-  seven_seg_3 seg_dec (
+  seven_seg_5 seg_dec (
     .char(M_seg_dec_char),
     .segs(M_seg_dec_segs)
   );

@@ -29,6 +29,7 @@ module au_top_0 (
   wire [16-1:0] M_beta_pattern;
   wire [4-1:0] M_beta_score;
   wire [1-1:0] M_beta_time_show;
+  wire [1-1:0] M_beta_timer_froze;
   reg [9-1:0] M_beta_play_button;
   reg [1-1:0] M_beta_clear_button;
   reg [1-1:0] M_beta_pass_button;
@@ -47,21 +48,41 @@ module au_top_0 (
     .current_state(M_beta_current_state),
     .pattern(M_beta_pattern),
     .score(M_beta_score),
-    .time_show(M_beta_time_show)
+    .time_show(M_beta_time_show),
+    .timer_froze(M_beta_timer_froze)
   );
   
   wire [16-1:0] M_timer_out;
   reg [1-1:0] M_timer_reset_button;
+  reg [1-1:0] M_timer_time_froze;
+  reg [1-1:0] M_timer_signal;
   time_countdown_2 timer (
     .clk(clk),
     .rst(rst),
     .reset_button(M_timer_reset_button),
+    .time_froze(M_timer_time_froze),
+    .signal(M_timer_signal),
     .out(M_timer_out)
+  );
+  
+  wire [1-1:0] M_counter1_value;
+  counter_3 counter1 (
+    .clk(clk),
+    .rst(rst),
+    .value(M_counter1_value)
+  );
+  
+  wire [1-1:0] M_edge_detector1_out;
+  reg [1-1:0] M_edge_detector1_in;
+  edge_detector_4 edge_detector1 (
+    .clk(clk),
+    .in(M_edge_detector1_in),
+    .out(M_edge_detector1_out)
   );
   
   wire [7-1:0] M_score_segs;
   reg [4-1:0] M_score_char;
-  seven_seg_3 score (
+  seven_seg_5 score (
     .char(M_score_char),
     .segs(M_score_segs)
   );
@@ -69,7 +90,7 @@ module au_top_0 (
   wire [7-1:0] M_time_seven_seg_seg;
   wire [4-1:0] M_time_seven_seg_sel;
   reg [16-1:0] M_time_seven_seg_values;
-  multi_seven_seg_4 time_seven_seg (
+  multi_seven_seg_6 time_seven_seg (
     .clk(clk),
     .rst(rst),
     .values(M_time_seven_seg_values),
@@ -80,7 +101,7 @@ module au_top_0 (
   wire [32-1:0] M_randnum_num;
   reg [1-1:0] M_randnum_next;
   reg [32-1:0] M_randnum_seed;
-  pn_gen_5 randnum (
+  pn_gen_7 randnum (
     .clk(clk),
     .rst(rst),
     .next(M_randnum_next),
@@ -88,32 +109,23 @@ module au_top_0 (
     .num(M_randnum_num)
   );
   
-  wire [16-1:0] M_patterns_out;
-  reg [3-1:0] M_patterns_addressr;
-  reg [16-1:0] M_patterns_addressl;
-  pattern_rom_6 patterns (
-    .addressr(M_patterns_addressr),
-    .addressl(M_patterns_addressl),
-    .out(M_patterns_out)
-  );
-  
   wire [1-1:0] M_reset_cond_out;
   reg [1-1:0] M_reset_cond_in;
-  reset_conditioner_7 reset_cond (
+  reset_conditioner_8 reset_cond (
     .clk(clk),
     .in(M_reset_cond_in),
     .out(M_reset_cond_out)
   );
   wire [1-1:0] M_reset_edge_detector_out;
   reg [1-1:0] M_reset_edge_detector_in;
-  edge_detector_8 reset_edge_detector (
+  edge_detector_9 reset_edge_detector (
     .clk(clk),
     .in(M_reset_edge_detector_in),
     .out(M_reset_edge_detector_out)
   );
   wire [1-1:0] M_reset_button_cond_out;
   reg [1-1:0] M_reset_button_cond_in;
-  button_conditioner_9 reset_button_cond (
+  button_conditioner_10 reset_button_cond (
     .clk(clk),
     .in(M_reset_button_cond_in),
     .out(M_reset_button_cond_out)
@@ -123,21 +135,22 @@ module au_top_0 (
     M_reset_cond_in = ~rst_n;
     rst = M_reset_cond_out;
     usb_tx = usb_rx;
-    M_timer_reset_button = reset_button;
+    M_timer_time_froze = M_beta_timer_froze;
+    M_edge_detector1_in = M_counter1_value;
+    M_timer_signal = M_edge_detector1_out;
     M_beta_play_button = button;
     M_beta_pass_button = pass_button;
     M_beta_clear_button = clear_button;
     M_reset_button_cond_in = ~reset_button;
     M_reset_edge_detector_in = M_reset_button_cond_out;
     M_beta_reset_edge = M_reset_edge_detector_out;
+    M_timer_reset_button = M_reset_button_cond_out;
     M_beta_t = M_timer_out;
     M_score_char = M_beta_score;
     M_randnum_seed = 32'habcdefff;
     M_randnum_next = M_reset_edge_detector_out;
     M_beta_randnum_val = M_randnum_num;
     led = M_randnum_num;
-    M_patterns_addressr = M_randnum_num[0+2-:3];
-    M_patterns_addressl = 3'h0;
     player = M_beta_current_state[0+8-:9];
     pattern = M_beta_pattern[0+8-:9];
     M_time_seven_seg_values = M_timer_out;

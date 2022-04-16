@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module pattern_rom_6 (
+module pattern_rom_15 (
     input [2:0] addressr,
     input [15:0] addressl,
     output reg [15:0] out

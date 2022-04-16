@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Wed Apr 13 17:09:48 2022
+| Date         : Fri Apr 15 16:12:47 2022
 | Host         : DESKTOP-F3P71CO running 64-bit major release  (build 9200)
 | Command      : report_control_sets -verbose -file au_top_0_control_sets_placed.rpt
 | Design       : au_top_0
@@ -27,7 +27,7 @@ Table of Contents
 |    Minimum number of control sets                        |    25 |
 |    Addition due to synthesis replication                 |     0 |
 |    Addition due to physical synthesis replication        |     0 |
-| Unused register locations in slices containing registers |    81 |
+| Unused register locations in slices containing registers |    78 |
 +----------------------------------------------------------+-------+
 * Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
 ** Run report_qor_suggestions for automated merging and remapping suggestions
@@ -41,10 +41,10 @@ Table of Contents
 +--------------------+-------+
 | Total control sets |    25 |
 | >= 0 to < 4        |     0 |
-| >= 4 to < 6        |     3 |
-| >= 6 to < 8        |     0 |
-| >= 8 to < 10       |     0 |
-| >= 10 to < 12      |     1 |
+| >= 4 to < 6        |     2 |
+| >= 6 to < 8        |     1 |
+| >= 8 to < 10       |     1 |
+| >= 10 to < 12      |     0 |
 | >= 12 to < 14      |     0 |
 | >= 14 to < 16      |     0 |
 | >= 16              |    21 |
@@ -58,46 +58,46 @@ Table of Contents
 +--------------+-----------------------+------------------------+-----------------+--------------+
 | Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
 +--------------+-----------------------+------------------------+-----------------+--------------+
-| No           | No                    | No                     |              37 |           19 |
+| No           | No                    | No                     |              38 |           17 |
 | No           | No                    | Yes                    |               0 |            0 |
-| No           | Yes                   | No                     |              86 |           24 |
-| Yes          | No                    | No                     |               0 |            0 |
+| No           | Yes                   | No                     |              87 |           26 |
+| Yes          | No                    | No                     |               9 |            3 |
 | Yes          | No                    | Yes                    |               0 |            0 |
-| Yes          | Yes                   | No                     |             444 |          125 |
+| Yes          | Yes                   | No                     |             436 |          123 |
 +--------------+-----------------------+------------------------+-----------------+--------------+
 
 
 4. Detailed Control Set Information
 -----------------------------------
 
-+-----------------------+------------------------------------------------------------------------+------------------------------------------------------------------------+------------------+----------------+--------------+
-|      Clock Signal     |                              Enable Signal                             |                            Set/Reset Signal                            | Slice Load Count | Bel Load Count | Bels / Slice |
-+-----------------------+------------------------------------------------------------------------+------------------------------------------------------------------------+------------------+----------------+--------------+
-|  clk_IBUF_BUFG        |                                                                        | reset_cond/M_reset_cond_in                                             |                2 |              4 |         2.00 |
-|  clk_IBUF_BUFG        | beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[2]_2[0]          | reset_button_cond/SR[0]                                                |                1 |              4 |         4.00 |
-|  clk_IBUF_BUFG        | beta/game_controlunit/FSM_sequential_M_game_fsm_q[4]_i_1_n_0           | clk_IBUF_BUFG                                                          |                3 |              5 |         1.67 |
-|  timer/slowclock/S[0] |                                                                        | reset_cond/Q[0]                                                        |                3 |             10 |         3.33 |
-|  clk_IBUF_BUFG        | beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[4]_3[0]          | clk_IBUF_BUFG                                                          |                6 |             16 |         2.67 |
-|  clk_IBUF_BUFG        | beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[0]_3[0]          | clk_IBUF_BUFG                                                          |                7 |             16 |         2.29 |
-|  clk_IBUF_BUFG        | beta/game_controlunit/E[0]                                             | clk_IBUF_BUFG                                                          |                9 |             16 |         1.78 |
-|  clk_IBUF_BUFG        | beta/game_controlunit/M_pattern_store_d                                | clk_IBUF_BUFG                                                          |                8 |             19 |         2.38 |
-|  clk_IBUF_BUFG        | beta/playerbuttoncond_gen_0[5].playerbuttoncond/M_ctr_q[0]_i_2__2_n_0  | beta/playerbuttoncond_gen_0[5].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/playerbuttoncond_gen_0[6].playerbuttoncond/M_ctr_q[0]_i_2__1_n_0  | beta/playerbuttoncond_gen_0[6].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/playerbuttoncond_gen_0[7].playerbuttoncond/M_ctr_q[0]_i_2__0_n_0  | beta/playerbuttoncond_gen_0[7].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/playerbuttoncond_gen_0[8].playerbuttoncond/sel                    | beta/playerbuttoncond_gen_0[8].playerbuttoncond/sync/clear             |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/passbuttoncond/M_ctr_q[0]_i_2__6_n_0                              | beta/passbuttoncond/sync/M_pipe_q_reg[1]_0                             |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/playerbuttoncond_gen_0[0].playerbuttoncond/M_ctr_q[0]_i_2__5_n_0  | beta/playerbuttoncond_gen_0[0].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/playerbuttoncond_gen_0[1].playerbuttoncond/M_ctr_q[0]_i_2__4_n_0  | beta/playerbuttoncond_gen_0[1].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/playerbuttoncond_gen_0[2].playerbuttoncond/M_ctr_q[0]_i_2__10_n_0 | beta/playerbuttoncond_gen_0[2].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/playerbuttoncond_gen_0[3].playerbuttoncond/M_ctr_q[0]_i_2__9_n_0  | beta/playerbuttoncond_gen_0[3].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | reset_button_cond/M_ctr_q[0]_i_2__11_n_0                               | reset_button_cond/sync/M_pipe_q_reg[1]_0                               |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/clearbuttoncond/M_ctr_q[0]_i_2__12_n_0                            | beta/clearbuttoncond/sync/M_pipe_q_reg[1]_0                            |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        | beta/playerbuttoncond_gen_0[4].playerbuttoncond/M_ctr_q[0]_i_2__3_n_0  | beta/playerbuttoncond_gen_0[4].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
-|  clk_IBUF_BUFG        |                                                                        | clk_IBUF_BUFG                                                          |                8 |             27 |         3.38 |
-|  clk_IBUF_BUFG        | reset_cond/M_stage_q_reg[3]_0                                          | reset_cond/Q[0]                                                        |               11 |             32 |         2.91 |
-|  clk_IBUF_BUFG        |                                                                        |                                                                        |               19 |             37 |         1.95 |
-|  clk_IBUF_BUFG        |                                                                        | reset_cond/Q[0]                                                        |               11 |             45 |         4.09 |
-|  clk_IBUF_BUFG        | reset_button_cond/E[0]                                                 | reset_cond/Q[0]                                                        |               20 |             96 |         4.80 |
-+-----------------------+------------------------------------------------------------------------+------------------------------------------------------------------------+------------------+----------------+--------------+
++----------------+-----------------------------------------------------------------------+------------------------------------------------------------------------+------------------+----------------+--------------+
+|  Clock Signal  |                             Enable Signal                             |                            Set/Reset Signal                            | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------+-----------------------------------------------------------------------+------------------------------------------------------------------------+------------------+----------------+--------------+
+|  clk_IBUF_BUFG |                                                                       | reset_cond/M_reset_cond_in                                             |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | beta/game_controlunit/M_game_controlunit_increase                     | beta/game_controlunit/SR[0]                                            |                1 |              4 |         4.00 |
+|  clk_IBUF_BUFG | beta/game_controlunit/FSM_sequential_M_game_fsm_q[5]_i_1_n_0          | clk_IBUF_BUFG                                                          |                4 |              6 |         1.50 |
+|  clk_IBUF_BUFG | reset_cond/M_stage_q_reg[3]_0                                         |                                                                        |                3 |              9 |         3.00 |
+|  clk_IBUF_BUFG | beta/game_controlunit/M_pattern_store_d                               | clk_IBUF_BUFG                                                          |                9 |             16 |         1.78 |
+|  clk_IBUF_BUFG | beta/game_controlunit/E[0]                                            | clk_IBUF_BUFG                                                          |                8 |             16 |         2.00 |
+|  clk_IBUF_BUFG | beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[2]_2[0]         | clk_IBUF_BUFG                                                          |                6 |             16 |         2.67 |
+|  clk_IBUF_BUFG | beta/game_controlunit/FSM_sequential_M_game_fsm_q_reg[0]_2[0]         | clk_IBUF_BUFG                                                          |                8 |             19 |         2.38 |
+|  clk_IBUF_BUFG | beta/playerbuttoncond_gen_0[3].playerbuttoncond/M_ctr_q[0]_i_2__4_n_0 | beta/playerbuttoncond_gen_0[3].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/playerbuttoncond_gen_0[4].playerbuttoncond/M_ctr_q[0]_i_2__3_n_0 | beta/playerbuttoncond_gen_0[4].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/playerbuttoncond_gen_0[0].playerbuttoncond/M_ctr_q[0]_i_2__7_n_0 | beta/playerbuttoncond_gen_0[0].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/playerbuttoncond_gen_0[1].playerbuttoncond/M_ctr_q[0]_i_2__6_n_0 | beta/playerbuttoncond_gen_0[1].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/playerbuttoncond_gen_0[2].playerbuttoncond/M_ctr_q[0]_i_2__5_n_0 | beta/playerbuttoncond_gen_0[2].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | reset_button_cond/M_ctr_q[0]_i_2__11_n_0                              | reset_button_cond/sync/clear                                           |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/clearbuttoncond/M_ctr_q[0]_i_2__8_n_0                            | beta/clearbuttoncond/sync/M_pipe_q_reg[1]_0                            |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/playerbuttoncond_gen_0[5].playerbuttoncond/M_ctr_q[0]_i_2__2_n_0 | beta/playerbuttoncond_gen_0[5].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/playerbuttoncond_gen_0[6].playerbuttoncond/M_ctr_q[0]_i_2__1_n_0 | beta/playerbuttoncond_gen_0[6].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/playerbuttoncond_gen_0[7].playerbuttoncond/M_ctr_q[0]_i_2__0_n_0 | beta/playerbuttoncond_gen_0[7].playerbuttoncond/sync/M_pipe_q_reg[1]_0 |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/playerbuttoncond_gen_0[8].playerbuttoncond/sel                   | beta/playerbuttoncond_gen_0[8].playerbuttoncond/sync/clear             |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | beta/passbuttoncond/M_ctr_q[0]_i_2__9_n_0                             | beta/passbuttoncond/sync/M_pipe_q_reg[1]_0                             |                5 |             20 |         4.00 |
+|  clk_IBUF_BUFG | reset_cond/M_stage_q_reg[3]_0                                         | reset_cond/Q[0]                                                        |                7 |             23 |         3.29 |
+|  clk_IBUF_BUFG |                                                                       | clk_IBUF_BUFG                                                          |                8 |             27 |         3.38 |
+|  clk_IBUF_BUFG |                                                                       |                                                                        |               17 |             38 |         2.24 |
+|  clk_IBUF_BUFG |                                                                       | reset_cond/Q[0]                                                        |               17 |             56 |         3.29 |
+|  clk_IBUF_BUFG | reset_button_cond/E[0]                                                | reset_cond/Q[0]                                                        |               20 |             96 |         4.80 |
++----------------+-----------------------------------------------------------------------+------------------------------------------------------------------------+------------------+----------------+--------------+
 
 

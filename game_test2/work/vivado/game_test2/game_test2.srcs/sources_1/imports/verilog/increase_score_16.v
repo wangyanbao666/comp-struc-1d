@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module increase_score_14 (
+module increase_score_16 (
     input clk,
     input rst,
     input reset,

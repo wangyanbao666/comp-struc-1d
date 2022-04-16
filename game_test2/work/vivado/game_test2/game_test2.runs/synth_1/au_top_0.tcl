@@ -85,28 +85,28 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib {
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/adder_20.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/alu_11.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/alu_12.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/boolean_22.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/button_conditioner_9.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/button_conditioner_10.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/comparator_21.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/counter_10.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/counter_16.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/counter_11.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/counter_17.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/counter_3.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/decoder_18.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/edge_detector_15.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/edge_detector_8.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/edge_detector_4.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/edge_detector_9.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/find_neighbor_25.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/flip_24.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/game_beta_1.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/game_controlUnit_12.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/game_regfile_13.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/increase_score_14.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/multi_seven_seg_4.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/pattern_rom_6.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/game_controlUnit_13.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/game_regfile_14.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/increase_score_16.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/multi_seven_seg_6.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/pattern_rom_15.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/pipeline_19.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/pn_gen_5.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/reset_conditioner_7.v}
-  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/seven_seg_3.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/pn_gen_7.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/reset_conditioner_8.v}
+  {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/seven_seg_5.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/shifter_23.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/time_countdown_2.v}
   {E:/comp struc/project/game_test2/work/vivado/game_test2/game_test2.srcs/sources_1/imports/verilog/au_top_0.v}

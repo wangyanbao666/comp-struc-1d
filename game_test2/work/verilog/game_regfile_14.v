@@ -4,7 +4,7 @@
    This is a temporary file and any changes made to it will be destroyed.
 */
 
-module game_regfile_13 (
+module game_regfile_14 (
     input clk,
     input rst,
     input [15:0] wr_data,

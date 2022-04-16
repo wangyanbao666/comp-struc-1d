@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 --------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Wed Apr 13 17:10:12 2022
+| Date         : Fri Apr 15 16:13:13 2022
 | Host         : DESKTOP-F3P71CO running 64-bit major release  (build 9200)
 | Command      : report_methodology -file au_top_0_methodology_drc_routed.rpt -pb au_top_0_methodology_drc_routed.pb -rpx au_top_0_methodology_drc_routed.rpx
 | Design       : au_top_0
@@ -23,66 +23,15 @@ Table of Contents
           Floorplan: design_1
       Design limits: <entire design considered>
              Max violations: <unlimited>
-             Violations found: 67
-+-----------+------------------+-------------------------------+------------+
-| Rule      | Severity         | Description                   | Violations |
-+-----------+------------------+-------------------------------+------------+
-| TIMING-17 | Critical Warning | Non-clocked sequential cell   | 10         |
-| TIMING-18 | Warning          | Missing input or output delay | 57         |
-+-----------+------------------+-------------------------------+------------+
+             Violations found: 57
++-----------+----------+-------------------------------+------------+
+| Rule      | Severity | Description                   | Violations |
++-----------+----------+-------------------------------+------------+
+| TIMING-18 | Warning  | Missing input or output delay | 57         |
++-----------+----------+-------------------------------+------------+
 
 2. REPORT DETAILS
 -----------------
-TIMING-17#1 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time1_q_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#2 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time1_q_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#3 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time1_q_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#4 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time1_q_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#5 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time2_q_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#6 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time2_q_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#7 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time2_q_reg[2]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#8 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time2_q_reg[3]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#9 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time3_q_reg[0]/C is not reached by a timing clock
-Related violations: <none>
-
-TIMING-17#10 Critical Warning
-Non-clocked sequential cell  
-The clock pin timer/M_time3_q_reg[1]/C is not reached by a timing clock
-Related violations: <none>
-
 TIMING-18#1 Warning
 Missing input or output delay  
 An input delay is missing on button[0] relative to clock(s) clk_0

@@ -10,20 +10,19 @@ module game_controlUnit (
     input toggle,
     
     output we,
-    output wdsel[3],
+    output wdsel[4],
     output asel[3],
     output bsel[3],
     output alufn[6],
     output wr[16],
     output button_sig[16],
     output increase,
-    output time_show
-    //output time_froze
+    output time_show,
+    output time_froze
   ) {
   
 
   fsm game_fsm(.clk(clk),.rst(rst))={
-    PREPARE0,
     PREPARE,
     START,
     SET_PATTERN,
@@ -57,6 +56,16 @@ module game_controlUnit (
     LOSE_PATTERN5,
     LOSE_PATTERN6,
     CHECKWINLOSE,
+    WIN_PATTERN1,
+    WIN_PATTERN2,
+    WIN_PATTERN3,
+    WIN_PATTERN4,
+    WIN_PATTERN5,
+    WIN_PATTERN6,
+    WIN_PATTERN7,
+    WIN_PATTERN8,
+    WIN_PATTERN9,
+    CHECKWINLOSE_TRANS,
     GAMEOVER
     };
 
@@ -70,14 +79,9 @@ module game_controlUnit (
     button_sig = 16b0;
     increase = 0;
     time_show = 1;
+    time_froze = 0;
 
       case (game_fsm.q){
-        game_fsm.PREPARE0:
-          time_show = 0;
-          if (reset_button){
-          game_fsm.d = game_fsm.PREPARE;
-          }
-      
         game_fsm.PREPARE:
           game_fsm.d = game_fsm.PREPARE;
           time_show = 0;
@@ -110,7 +114,10 @@ module game_controlUnit (
           game_fsm.d = game_fsm.IDLE;
           
         game_fsm.IDLE:   
-          if (clear_button){
+          if (t[0]==b0000 && t[1]==b0000 && t[2]==b0000 && t[3]==b0000){
+            game_fsm.d = game_fsm.LOSE_PATTERN1;
+          }
+          else if (clear_button){
             game_fsm.d = game_fsm.CLEAR_BOARD;
             }
           else if (button[0]){
@@ -149,9 +156,7 @@ module game_controlUnit (
           else {
             game_fsm.d = game_fsm.IDLE;
             }
-          if (t[0]==b0000 && t[1]==b0000 && t[2]==b0000 && t[3]==b0000){
-            game_fsm.d = game_fsm.LOSE_PATTERN1;
-          }
+
           
         game_fsm.CLEAR_BOARD:
           we = b1;
@@ -282,12 +287,133 @@ module game_controlUnit (
           
         game_fsm.CHECK_LEVEL_TRANS:
           if (z==1){
-            game_fsm.d = game_fsm.LOSE_PATTERN1;
+            game_fsm.d = game_fsm.CHECKWINLOSE;
             }
           else {
             game_fsm.d = game_fsm.ADD_LEVEL;
             }
-
+        
+        game_fsm.CHECKWINLOSE:
+          asel = 3b011;
+          bsel = 3b011;
+          alufn = 6b110011;
+          game_fsm.d = game_fsm.CHECKWINLOSE_TRANS;
+        
+        game_fsm.CHECKWINLOSE_TRANS:
+          if (z==1){
+            game_fsm.d = game_fsm.WIN_PATTERN1;
+          }   
+          else {
+            game_fsm.d = game_fsm.LOSE_PATTERN1;
+          }   
+         
+        game_fsm.WIN_PATTERN1:
+          time_froze = 1;
+          we = b1;
+          wdsel = b110;
+          wr = 16b1;
+          if (toggle){
+            game_fsm.d = game_fsm.WIN_PATTERN2;
+          }
+          else {
+            game_fsm.d = game_fsm.WIN_PATTERN1;
+          }
+        
+        game_fsm.WIN_PATTERN2:
+          time_froze = 1;
+          we = b1;
+          wdsel = b111;
+          wr = 16b1;
+          if (toggle){
+            game_fsm.d = game_fsm.WIN_PATTERN3;
+          }
+          else {
+            game_fsm.d = game_fsm.WIN_PATTERN2;
+          }
+        
+        game_fsm.WIN_PATTERN3:
+          time_froze = 1;
+          we = b1;
+          wdsel = b1000;
+          wr = 16b1;
+          if (toggle){
+            game_fsm.d = game_fsm.WIN_PATTERN4;
+          }
+          else {
+            game_fsm.d = game_fsm.WIN_PATTERN3;
+          }
+        
+        game_fsm.WIN_PATTERN4:
+          time_froze = 1;
+          we = b1;
+          wdsel = b1001;
+          wr = 16b1;
+          if (toggle){
+            game_fsm.d = game_fsm.WIN_PATTERN5;
+          }
+          else {
+            game_fsm.d = game_fsm.WIN_PATTERN4;
+          }
+        
+        game_fsm.WIN_PATTERN5:
+          time_froze = 1;
+          we = b1;
+          wdsel = b1010;
+          wr = 16b1;
+          if (toggle){
+            game_fsm.d = game_fsm.WIN_PATTERN6;
+          }
+          else {
+            game_fsm.d = game_fsm.WIN_PATTERN5;
+          }
+        
+        game_fsm.WIN_PATTERN6:
+          time_froze = 1;
+          we = b1;
+          wdsel = b1011;
+          wr = 16b1;
+          if (toggle){
+            game_fsm.d = game_fsm.WIN_PATTERN7;
+          }
+          else {
+            game_fsm.d = game_fsm.WIN_PATTERN6;
+          }
+        
+        game_fsm.WIN_PATTERN7:
+          time_froze = 1;
+          we = b1;
+          wdsel = b1100;
+          wr = 16b1;
+          if (toggle){
+            game_fsm.d = game_fsm.WIN_PATTERN8;
+          }
+          else {
+            game_fsm.d = game_fsm.WIN_PATTERN7;
+          }
+        
+        game_fsm.WIN_PATTERN8:
+          time_froze = 1;
+          we = b1;
+          wdsel = b1101;
+          wr = 16b1;
+          if (toggle){
+            game_fsm.d = game_fsm.WIN_PATTERN9;
+          }
+          else {
+            game_fsm.d = game_fsm.WIN_PATTERN8;
+          }
+        
+        game_fsm.WIN_PATTERN9:
+          time_froze = 1;
+          we = b1;
+          wdsel = b1110;
+          wr = 16b1;
+          if (toggle){
+            game_fsm.d = game_fsm.GAMEOVER;
+          }
+          else {
+            game_fsm.d = game_fsm.WIN_PATTERN9;
+          }
         
         game_fsm.ADD_LEVEL:
           we = b1;
@@ -331,6 +457,7 @@ module game_controlUnit (
           we = b1;
           wdsel = b100;
           wr = 16h1;
+      
           if (toggle){
             game_fsm.d = game_fsm.LOSE_PATTERN4;
             }
@@ -342,6 +469,7 @@ module game_controlUnit (
           we = b1;
           wdsel = b011;
           wr = 16h1;
+
           if (toggle){
             game_fsm.d = game_fsm.LOSE_PATTERN5;
             }
@@ -354,6 +482,7 @@ module game_controlUnit (
           we = b1;
           wdsel = b100;
           wr = 16h1;
+      
           if (toggle){
             game_fsm.d = game_fsm.LOSE_PATTERN6;
             }
@@ -365,6 +494,7 @@ module game_controlUnit (
           we = b1;
           wdsel = b011;
           wr = 16h1;
+          
           if (toggle){
             game_fsm.d = game_fsm.LOSE_PATTERN6;
             }
@@ -373,6 +503,7 @@ module game_controlUnit (
           }
           
         game_fsm.GAMEOVER:
+          time_froze = 1;
           we = b1;
           wdsel = b101;
           wr = 16h1;
