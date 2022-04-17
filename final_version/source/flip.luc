@@ -1,0 +1,13 @@
+module flip (
+    input c[16],  // reset
+    input current_state[16],
+    output s[16]
+  ) {
+  sig neighbor[16];
+  find_neighbor fn;
+  always {
+    fn.c = c;
+    neighbor=fn.s;
+    s=current_state^neighbor;
+  }
+}

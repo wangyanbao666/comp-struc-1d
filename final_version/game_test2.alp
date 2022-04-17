@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="game_test2" board="Alchitry Au" language="Lucid" version="3">
+  <files>
+    <component>pn_gen.luc</component>
+    <src>game_regfile.luc</src>
+    <component>pipeline.luc</component>
+    <src>multi_seven_seg.luc</src>
+    <src top="true">au_top.luc</src>
+    <src>increase_score.luc</src>
+    <src>game_controlUnit.luc</src>
+    <component>button_conditioner.luc</component>
+    <component>reset_conditioner.luc</component>
+    <component>edge_detector.luc</component>
+    <src>comparator.luc</src>
+    <src>seven_seg.luc</src>
+    <src>flip.luc</src>
+    <src>alu.luc</src>
+    <component>counter.luc</component>
+    <src>game_beta.luc</src>
+    <src>end_game_timer.luc</src>
+    <src>adder.luc</src>
+    <src>shifter.luc</src>
+    <src>time_countdown.luc</src>
+    <src>boolean.luc</src>
+    <src>find_neighbor.luc</src>
+    <component>decoder.luc</component>
+    <src>pattern_rom.luc</src>
+    <constraint>custom.acf</constraint>
+    <constraint>custom.xdc</constraint>
+  </files>
+</project>
