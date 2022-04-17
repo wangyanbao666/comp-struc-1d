@@ -1,0 +1,85 @@
+module au_top (
+    input clk,              // 100MHz clock
+    input rst_n,            // reset button (active low)
+    input usb_rx,           // USB->Serial input
+    output usb_tx,          // USB->Serial output
+    input button[9],
+    input clear_button,
+    input pass_button,
+    input reset_button, // pu input, active low
+    output player[9],
+    output pattern[9],
+    output score_seg[7],
+    output timer_seg[7],
+    output timer_sel[4],
+    output led[8]
+    
+  ) {
+  
+  sig rst;                  // reset signal
+  game_beta beta(.clk(clk),.rst(clk));
+  time_countdown timer(.clk(clk),.rst(rst));
+  counter counter1(#SIZE(1),#DIV(26),.clk(clk),.rst(rst));
+  edge_detector edge_detector1(#RISE(1), #FALL(0),.clk(clk));
+  seven_seg score;
+  multi_seven_seg time_seven_seg(.clk(clk),.rst(rst));
+  pn_gen randnum(.clk(clk), .rst(rst));
+  
+  .clk(clk) {
+    // The reset conditioner is used to synchronize the reset signal to the FPGA
+    // clock. This ensures the entire FPGA comes out of reset at the same time.
+    reset_conditioner reset_cond;
+    edge_detector reset_edge_detector(#RISE(0), #FALL(1));
+    button_conditioner reset_button_cond;
+  }
+  
+  always {
+    reset_cond.in = ~rst_n; // input raw inverted reset signal
+    rst = reset_cond.out;   // conditioned reset
+    
+    usb_tx = usb_rx;        // loop serial port
+    
+    timer.time_froze = beta.timer_froze;
+    
+    edge_detector1.in = counter1.value;
+    timer.signal = edge_detector1.out;
+    
+    beta.play_button = button;
+    beta.pass_button = pass_button;
+    beta.clear_button = clear_button;
+    
+    reset_button_cond.in = ~reset_button;
+    reset_edge_detector.in = reset_button_cond.out;
+    beta.reset_edge = reset_edge_detector.out; // reset_button coming into beta is already conditioned, active HIGH
+    
+    timer.reset_button = reset_button_cond.out;
+    beta.t = timer.out;
+    score.char = beta.score;
+    
+    randnum.seed = 32hABCDEFFF;
+    randnum.next = reset_edge_detector.out;
+    beta.randnum_val = randnum.num;
+    led = randnum.num;
+    
+  
+    
+    player = beta.current_state[8:0];
+    pattern = beta.pattern[8:0];
+    //pattern = patterns.out; // debug
+    
+    
+    time_seven_seg.values = timer.out;
+    timer_seg = time_seven_seg.seg;
+    if (beta.time_show==1){
+      score_seg = ~score.segs;
+      timer_sel = ~time_seven_seg.sel;
+      //timer_sel[3] = 0;
+      }
+    else {
+      score_seg = b1111111;
+      timer_sel = b1111;
+      }
+
+
+  }
+}
