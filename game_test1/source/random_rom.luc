@@ -1,9 +1,0 @@
-module random_rom (
-    input address[3],
-    output out[4]
-  ) {
-  const NUM = {4d1,4d2,4d3,4d4,4d5,4d6,4d7,4d8};
-  always {
-    out = NUM[address];
-  }
-}
